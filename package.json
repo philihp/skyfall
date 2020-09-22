@@ -19,7 +19,8 @@
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
-    "@philihp/eslint-config": "3.0.2"
+    "@philihp/eslint-config": "3.0.2",
+    "sass": "^1.26.11"
   },
   "lint-staged": {
     "**/*.{js,jsx,json}": [

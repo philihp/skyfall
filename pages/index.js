@@ -1,6 +1,11 @@
 import React from 'react'
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import DataTable from 'react-data-table-component'
+import styles from '../styles/Home.module.scss'
+
+const columns = ['a', 'b', 'c', 'd']
+
+const data = []
 
 export default function Home() {
   return (
@@ -30,23 +35,20 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Skyfall</h1>
-
-        <p className={styles.description}>
-          Optimized Donations for Blue Campaigns
-        </p>
-
-        <div className={styles.grid}>Hello</div>
+        <p className={styles.description}>Make every dollar count</p>
+        <div className={styles.grid}>
+          <DataTable highlightOnHover columns={columns} data={data} />
+        </div>
       </main>
 
       <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Built in San Francisco by
-          <img src="/public" alt="Vercel Logo" className={styles.logo} />
-        </a>
+        Built with <span className={styles.heart}>&hearts;</span> by
+        <img
+          src="/favicon-32x32.png"
+          alt="Data 2 The People"
+          className={styles.logo}
+        />
+        <a href="https://www.data2thepeople.org">Data 2 the People</a>
       </footer>
     </div>
   )
