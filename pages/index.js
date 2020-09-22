@@ -1,17 +1,14 @@
 import React from 'react'
 import Head from 'next/head'
 import DataTable from 'react-data-table-component'
-import styles from '../styles/Home.module.scss'
+import styles from '../styles/Home.module.css'
+import { readData, readColumns } from '../lib/readData'
 
-const columns = ['a', 'b', 'c', 'd']
-
-const data = []
-
-export default function Home() {
+export default ({ data, columns }) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Skyfall</title>
+        <title>Donate with Data2thePeople</title>
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -34,10 +31,10 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Skyfall</h1>
+        <h1 className={styles.title}>Donate</h1>
         <p className={styles.description}>Make every dollar count</p>
         <div className={styles.grid}>
-          <DataTable highlightOnHover columns={columns} data={data} />
+          <DataTable highlightOnHover noHeader columns={columns} data={data} />
         </div>
       </main>
 
@@ -52,4 +49,15 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+
+export const getStaticProps = async () => {
+  const data = await readData()
+  const columns = await readColumns()
+  return {
+    props: {
+      data,
+      columns,
+    },
+  }
 }

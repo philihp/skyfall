@@ -1,3 +1,6 @@
 {
-  "extends": ["@philihp"]
+  "extends": ["@philihp"],
+  "rules": {
+    "react/prop-types": "off"
+  }
 }

@@ -12,15 +12,15 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "neat-csv": "^5.2.0",
     "next": "9.5.3",
     "react": "16.13.1",
-    "react-data-table-component": "^6.11.5",
+    "react-data-table-component": "6.11.5",
     "react-dom": "16.13.1",
-    "styled-components": "^5.2.0"
+    "styled-components": "5.2.0"
   },
   "devDependencies": {
-    "@philihp/eslint-config": "3.0.2",
-    "sass": "^1.26.11"
+    "@philihp/eslint-config": "3.0.2"
   },
   "lint-staged": {
     "**/*.{js,jsx,json}": [
