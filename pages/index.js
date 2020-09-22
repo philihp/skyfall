@@ -4,7 +4,7 @@ import DataTable from 'react-data-table-component'
 import styles from '../styles/Home.module.css'
 import { readData, readColumns } from '../lib/readData'
 
-export default ({ data, columns }) => {
+const Index = ({ data, columns }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -61,3 +61,5 @@ export const getStaticProps = async () => {
     },
   }
 }
+
+export default Index
