@@ -10,11 +10,15 @@ import { Item } from '@airbnb/lunar/lib/components/Menu'
 import Dropdown from '../components/Dropdown'
 import Header from '../components/Header'
 import Scatterplot from '../components/Scatterplot'
+import Map from '../components/Map'
 import { FILTER_FIELDS, BREAK_CHAR } from '../setup/config'
 import { readData, readColumns } from '../lib/readData'
 import { stringNumToFloat } from '../utils/utils'
 
 const styleSheet = () => ({
+  center: {
+    display: 'flex',
+  },
   row: {
     display: 'inline-flex',
     alignItems: 'flex-end',
@@ -143,24 +147,36 @@ function Index({ data, columns }) {
   return (
     <div className={styles.container}>
       <Header />
-      <Spacing all={2}>
-        <Scatterplot
-          hoveredIdx={hoveredIdx}
-          setHoveredIdx={setHoveredIdx}
-          data={data}
-          filteredDataIdxs={filteredDataIdxs}
-        />
-        <div className={cx(styles.row)}>
-          <Button
-            small
-            onClick={() => {
-              setFilterOptions({})
-            }}
-          >
-            Clear All
-          </Button>
-          {filters}
+      <Spacing all={3}>
+        <div className={cx(styles.center)}>
+          <div className={cx(styles.row)}>
+            <Map
+              filterOptions={filterOptions}
+              setFilterOptions={setFilterOptions}
+            />
+            <Scatterplot
+              hoveredIdx={hoveredIdx}
+              setHoveredIdx={setHoveredIdx}
+              data={data}
+              filteredDataIdxs={filteredDataIdxs}
+            />
+          </div>
         </div>
+        <Spacing vertical={3}>
+          <div className={cx(styles.center)}>
+            <div className={cx(styles.row)}>
+              <Button
+                small
+                onClick={() => {
+                  setFilterOptions({})
+                }}
+              >
+                Clear All
+              </Button>
+              {filters}
+            </div>
+          </div>
+        </Spacing>
         <DataTable
           highlightOnHover
           noHeader

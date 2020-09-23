@@ -9,8 +9,8 @@ import { dollarToFloat, stringNumToFloat } from '../utils/utils'
 
 export default function Scatterplot({
   width = 400,
-  height = 400,
-  margin = 80,
+  height = 320,
+  margin = 55,
   xField = SCATTERPLOT_X_FIELD,
   yField = SCATTERPLOT_Y_FIELD,
   data,
@@ -69,19 +69,19 @@ export default function Scatterplot({
               key={`point-${i}`}
               cx={xScale(point.x)}
               cy={yScale(point.y)}
-              r={3}
-              opacity={filteredIdxSet.has(i) ? 1 : 0.1}
-              fill="#3664fa"
-              stroke="black"
-              strokeWidth={hoveredIdx === i ? 2 : 0}
+              r={hoveredIdx === i ? 4 : 3}
+              opacity={filteredIdxSet.has(i) ? 1 : 0.15}
+              fill={hoveredIdx === i ? 'white' : '#6f44ff'}
+              stroke="#6f44ff"
+              strokeWidth={hoveredIdx === i ? 3 : 0}
             />
             <Circle
               key={`point-${i}-target`}
               cx={xScale(point.x)}
               cy={yScale(point.y)}
               r={10}
-              fill="red"
-              opacity={filteredIdxSet.has(i) ? 0.1 : 0.001}
+              fill="#6f44ff"
+              opacity={filteredIdxSet.has(i) ? 0.1 : 0}
               onMouseOver={() => {
                 setHoveredIdx(i)
               }}
