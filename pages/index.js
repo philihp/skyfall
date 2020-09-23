@@ -11,6 +11,7 @@ import Header from '../components/Header'
 import Scatterplot from '../components/Scatterplot'
 import { FILTER_FIELDS, BREAK_CHAR } from '../setup/config'
 import { readData, readColumns } from '../lib/readData'
+import { stringNumToFloat } from '../utils/utils'
 
 const styleSheet = () => ({
   row: {
@@ -33,17 +34,17 @@ function Index({ data, columns }) {
         name: option,
       }))
 
-      const { num_buckets } = FILTER_FIELDS[field]
-      if (num_buckets != null) {
+      const { numBuckets } = FILTER_FIELDS[field]
+      if (numBuckets != null) {
         const sortedValues = data
           .map((row) => row[field])
-          .sort((a, b) => Number.parseFloat(a) - Number.parseFloat(b))
-        options = new Array(num_buckets)
+          .sort((a, b) => stringNumToFloat(a) - stringNumToFloat(b))
+        options = new Array(numBuckets)
           .fill(0)
           .map((_, idx) =>
-            Number.parseFloat(
+            stringNumToFloat(
               sortedValues[
-                Math.floor((sortedValues.length * idx) / num_buckets)
+                Math.floor((sortedValues.length * (idx + 1)) / numBuckets)
               ]
             )
           )
@@ -98,40 +99,55 @@ function Index({ data, columns }) {
     )
   })
 
-  const filteredData = data.filter((row, idx) => {
-    let shouldRender = true
-    if (hoveredIdx > 0 && hoveredIdx !== idx) {
-      return false
-    }
-    Object.keys(filterOptions).forEach((filterOptionKey) => {
-      const { num_buckets } = FILTER_FIELDS[filterOptionKey]
-      if (filterOptions[filterOptionKey] !== '') {
-        if (num_buckets !== undefined) {
-          const range = filterOptions[filterOptionKey].split(BREAK_CHAR)
-          if (
-            Number.parseFloat(row[filterOptionKey]) <
-              Number.parseFloat(range[0]) ||
-            Number.parseFloat(row[filterOptionKey]) >
-              Number.parseFloat(range[1])
+  const filteredDataIdxs = data
+    .map((row, idx) => idx)
+    .filter((idx) => {
+      const row = data[idx]
+      let shouldRender = true
+
+      Object.keys(filterOptions).forEach((filterOptionKey) => {
+        const { numBuckets } = FILTER_FIELDS[filterOptionKey]
+        if (filterOptions[filterOptionKey] !== '') {
+          if (numBuckets !== undefined) {
+            const range = filterOptions[filterOptionKey].split(BREAK_CHAR)
+            if (
+              stringNumToFloat(row[filterOptionKey]) <
+                stringNumToFloat(range[0]) ||
+              stringNumToFloat(row[filterOptionKey]) >
+                stringNumToFloat(range[1])
+            ) {
+              shouldRender = false
+            }
+          } else if (
+            row[filterOptionKey].toLowerCase() !==
+            filterOptions[filterOptionKey].toLowerCase()
           ) {
             shouldRender = false
           }
-        } else if (
-          row[filterOptionKey].toLowerCase() !==
-          filterOptions[filterOptionKey].toLowerCase()
-        ) {
-          shouldRender = false
         }
-      }
+      })
+      return shouldRender
     })
-    return shouldRender
-  })
+
+  const filteredData = filteredDataIdxs
+    .filter((idx) => {
+      if (hoveredIdx > 0 && hoveredIdx !== idx) {
+        return false
+      }
+      return true
+    })
+    .map((idx) => data[idx])
 
   return (
     <div className={styles.container}>
       <Header />
       <Spacing all={2}>
-        <Scatterplot setHoveredIdx={setHoveredIdx} data={data} />
+        <Scatterplot
+          hoveredIdx={hoveredIdx}
+          setHoveredIdx={setHoveredIdx}
+          data={data}
+          filteredDataIdxs={filteredDataIdxs}
+        />
         <div className={cx(styles.row)}>{filters}</div>
         <DataTable
           highlightOnHover

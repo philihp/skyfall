@@ -14,6 +14,8 @@ export default function Scatterplot({
   xField = SCATTERPLOT_X_FIELD,
   yField = SCATTERPLOT_Y_FIELD,
   data,
+  filteredDataIdxs,
+  hoveredIdx,
   setHoveredIdx,
 }) {
   const memoData = useMemo(() => {
@@ -56,6 +58,8 @@ export default function Scatterplot({
 
   const { scatterData, xScale, yScale } = memoData
 
+  const filteredIdxSet = new Set(filteredDataIdxs)
+
   return (
     <svg width={width} height={height}>
       <Group>
@@ -66,7 +70,10 @@ export default function Scatterplot({
               cx={xScale(point.x)}
               cy={yScale(point.y)}
               r={3}
+              opacity={filteredIdxSet.has(i) ? 1 : 0.1}
               fill="#3664fa"
+              stroke="black"
+              strokeWidth={hoveredIdx === i ? 2 : 0}
             />
             <Circle
               key={`point-${i}-target`}
@@ -74,7 +81,7 @@ export default function Scatterplot({
               cy={yScale(point.y)}
               r={10}
               fill="red"
-              opacity={0.04}
+              opacity={filteredIdxSet.has(i) ? 0.1 : 0.001}
               onMouseOver={() => {
                 setHoveredIdx(i)
               }}
