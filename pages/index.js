@@ -25,7 +25,7 @@ const BREAK_CHAR = ',,,'
 
 // TODO: Sorting doesn't work correct on string dollar values
 // TODO: CSS-in-JS
-// TODO: Sorting assumes it's possible to parseFloat
+// TODO: Sorting assumes it's possible to Number.parseFloat
 
 function Index({ data, columns }) {
   const [styles, cx] = useStyles(styleSheet)
@@ -42,20 +42,19 @@ function Index({ data, columns }) {
     if (num_buckets != null) {
       const sortedValues = data
         .map((row) => row[field])
-        .sort((a, b) => parseFloat(a) - parseFloat(b))
-      console.log(sortedValues)
+        .sort((a, b) => Number.parseFloat(a) - Number.parseFloat(b))
       options = new Array(num_buckets)
         .fill(0)
         .map((_, idx) =>
-          parseFloat(
+          Number.parseFloat(
             sortedValues[Math.floor((sortedValues.length * idx) / num_buckets)]
           )
         )
       items = [...options].map((option, idx) => ({
         value: `${
-          idx == 0 ? -Infinity : options[idx - 1]
+          idx === 0 ? -Infinity : options[idx - 1]
         }${BREAK_CHAR}${option}`,
-        name: `${idx == 0 ? '<' : `${options[idx - 1]} – `}${option}`,
+        name: `${idx === 0 ? '<' : `${options[idx - 1]} – `}${option}`,
       }))
     }
 
@@ -88,17 +87,19 @@ function Index({ data, columns }) {
     let shouldRender = true
     Object.keys(filterOptions).forEach((filterOptionKey) => {
       const { num_buckets } = FILTER_FIELDS[filterOptionKey]
-      if (filterOptions[filterOptionKey] != '') {
-        if (num_buckets != null) {
+      if (filterOptions[filterOptionKey] !== '') {
+        if (num_buckets !== undefined) {
           const range = filterOptions[filterOptionKey].split(BREAK_CHAR)
           if (
-            parseFloat(row[filterOptionKey]) < parseFloat(range[0]) ||
-            parseFloat(row[filterOptionKey]) > parseFloat(range[1])
+            Number.parseFloat(row[filterOptionKey]) <
+              Number.parseFloat(range[0]) ||
+            Number.parseFloat(row[filterOptionKey]) >
+              Number.parseFloat(range[1])
           ) {
             shouldRender = false
           }
         } else if (
-          row[filterOptionKey].toLowerCase() !=
+          row[filterOptionKey].toLowerCase() !==
           filterOptions[filterOptionKey].toLowerCase()
         ) {
           shouldRender = false
