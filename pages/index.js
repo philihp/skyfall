@@ -11,12 +11,12 @@ import Dropdown from '../components/Dropdown'
 import Header from '../components/Header'
 import Scatterplot from '../components/Scatterplot'
 import Map from '../components/Map'
+import readData from '../lib/readData'
 import {
   namedAndStyledColumns,
   FILTER_FIELDS,
   BREAK_CHAR,
 } from '../setup/config'
-import readData from '../lib/readData'
 import { stringNumToFloat } from '../utils/utils'
 
 const styleSheet = () => ({
