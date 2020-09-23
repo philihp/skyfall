@@ -29,7 +29,7 @@ const styleSheet = () => ({
 function Index({ data, columns }) {
   const [styles, cx] = useStyles(styleSheet)
   const [filterOptions, setFilterOptions] = useState({})
-  const [hoveredIdx, setHoveredIdx] = useState(-1)
+  const [selectedIdx, setSelectedIdx] = useState(-1)
 
   const menuFieldItems = useMemo(() => {
     const fieldItems = {}
@@ -137,7 +137,7 @@ function Index({ data, columns }) {
 
   const filteredData = filteredDataIdxs
     .filter((idx) => {
-      if (hoveredIdx > 0 && hoveredIdx !== idx) {
+      if (selectedIdx > 0 && selectedIdx !== idx) {
         return false
       }
       return true
@@ -155,8 +155,8 @@ function Index({ data, columns }) {
               setFilterOptions={setFilterOptions}
             />
             <Scatterplot
-              hoveredIdx={hoveredIdx}
-              setHoveredIdx={setHoveredIdx}
+              selectedIdx={selectedIdx}
+              setSelectedIdx={setSelectedIdx}
               data={data}
               filteredDataIdxs={filteredDataIdxs}
             />
@@ -169,6 +169,7 @@ function Index({ data, columns }) {
                 small
                 onClick={() => {
                   setFilterOptions({})
+                  setSelectedIdx(-1)
                 }}
               >
                 Clear All

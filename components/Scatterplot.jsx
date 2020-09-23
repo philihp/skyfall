@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 import { Circle } from '@visx/shape'
 import { Group } from '@visx/group'
@@ -15,9 +15,10 @@ export default function Scatterplot({
   yField = SCATTERPLOT_Y_FIELD,
   data,
   filteredDataIdxs,
-  hoveredIdx,
-  setHoveredIdx,
+  selectedIdx,
+  setSelectedIdx,
 }) {
+  const [hoveredIdx, setHoveredIdx] = useState(-1)
   const memoData = useMemo(() => {
     let minX = Infinity
     let maxX = -Infinity
@@ -62,18 +63,18 @@ export default function Scatterplot({
 
   return (
     <svg width={width} height={height}>
-      <Group>
+      <Group cursor="pointer">
         {scatterData.map((point, i) => (
           <Group>
             <Circle
               key={`point-${i}`}
               cx={xScale(point.x)}
               cy={yScale(point.y)}
-              r={hoveredIdx === i ? 4 : 3}
+              r={hoveredIdx === i || selectedIdx === i ? 4 : 3}
               opacity={filteredIdxSet.has(i) ? 1 : 0.15}
-              fill={hoveredIdx === i ? 'white' : '#6f44ff'}
+              fill={hoveredIdx === i || selectedIdx === i ? 'white' : '#6f44ff'}
               stroke="#6f44ff"
-              strokeWidth={hoveredIdx === i ? 3 : 0}
+              strokeWidth={hoveredIdx === i || selectedIdx === i ? 3 : 0}
             />
             <Circle
               key={`point-${i}-target`}
@@ -87,6 +88,9 @@ export default function Scatterplot({
               }}
               onMouseLeave={() => {
                 setHoveredIdx(-1)
+              }}
+              onClick={() => {
+                setSelectedIdx(i)
               }}
             />
           </Group>
