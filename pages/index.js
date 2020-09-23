@@ -153,12 +153,14 @@ function Index({ data, columns }) {
             <Map
               filterOptions={filterOptions}
               setFilterOptions={setFilterOptions}
+              setSelectedIdx={setSelectedIdx}
             />
             <Scatterplot
               selectedIdx={selectedIdx}
               setSelectedIdx={setSelectedIdx}
               data={data}
               filteredDataIdxs={filteredDataIdxs}
+              setFilterOptions={setFilterOptions}
             />
           </div>
         </div>

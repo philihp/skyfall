@@ -17,6 +17,7 @@ export default function Scatterplot({
   filteredDataIdxs,
   selectedIdx,
   setSelectedIdx,
+  setFilterOptions,
 }) {
   const [hoveredIdx, setHoveredIdx] = useState(-1)
   const memoData = useMemo(() => {
@@ -70,11 +71,16 @@ export default function Scatterplot({
               key={`point-${i}`}
               cx={xScale(point.x)}
               cy={yScale(point.y)}
-              r={hoveredIdx === i || selectedIdx === i ? 4 : 3}
-              opacity={filteredIdxSet.has(i) ? 1 : 0.15}
-              fill={hoveredIdx === i || selectedIdx === i ? 'white' : '#6f44ff'}
               stroke="#6f44ff"
-              strokeWidth={hoveredIdx === i || selectedIdx === i ? 3 : 0}
+              r={hoveredIdx === i ? 4 : 3}
+              opacity={
+                selectedIdx === i ||
+                (selectedIdx === -1 && filteredIdxSet.has(i))
+                  ? 1
+                  : 0.15
+              }
+              strokeWidth={hoveredIdx === i ? 3 : 0}
+              fill={hoveredIdx === i ? 'white' : '#6f44ff'}
             />
             <Circle
               key={`point-${i}-target`}
@@ -82,7 +88,12 @@ export default function Scatterplot({
               cy={yScale(point.y)}
               r={10}
               fill="#6f44ff"
-              opacity={filteredIdxSet.has(i) ? 0.1 : 0}
+              opacity={
+                selectedIdx === i ||
+                (selectedIdx === -1 && filteredIdxSet.has(i))
+                  ? 0.1
+                  : 0
+              }
               onMouseOver={() => {
                 setHoveredIdx(i)
               }}
@@ -91,6 +102,7 @@ export default function Scatterplot({
               }}
               onClick={() => {
                 setSelectedIdx(i)
+                setFilterOptions({})
               }}
             />
           </Group>

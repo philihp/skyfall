@@ -22,7 +22,7 @@ const nameToCodes = {
 
 // MapChart supports temporary filters on hover, but reverts to the previous configuration onMouseLeave.
 // Clicking a state persists the new filter configuration.
-const MapChart = ({ filterOptions, setFilterOptions }) => {
+const MapChart = ({ filterOptions, setFilterOptions, setSelectedIdx }) => {
   const [hoveredState, setHoveredState] = useState(-1)
   const statesData = states()
 
@@ -33,6 +33,7 @@ const MapChart = ({ filterOptions, setFilterOptions }) => {
       ...filterOptions,
       state: code,
     })
+    setSelectedIdx(-1)
   }
 
   const getOpacity = (name) => {
