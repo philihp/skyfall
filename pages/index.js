@@ -9,6 +9,7 @@ import { Item } from '@airbnb/lunar/lib/components/Menu'
 
 import Dropdown from '../components/Dropdown'
 import Header from '../components/Header'
+import Intro from '../components/Intro'
 import Scatterplot from '../components/Scatterplot'
 import Map from '../components/Map'
 import readData from '../lib/readData'
@@ -33,7 +34,7 @@ const styleSheet = () => ({
 function Index({ data }) {
   const [styles, cx] = useStyles(styleSheet)
   const [filterOptions, setFilterOptions] = useState({})
-  const [hoveredIdx, setHoveredIdx] = useState(-1)
+  const [selectedIdx, setSelectedIdx] = useState(-1)
 
   const menuFieldItems = useMemo(() => {
     const fieldItems = {}
@@ -141,7 +142,7 @@ function Index({ data }) {
 
   const filteredData = filteredDataIdxs
     .filter((idx) => {
-      if (hoveredIdx > 0 && hoveredIdx !== idx) {
+      if (selectedIdx > 0 && selectedIdx !== idx) {
         return false
       }
       return true
@@ -152,17 +153,20 @@ function Index({ data }) {
     <div className={styles.container}>
       <Header />
       <Spacing all={3}>
+        <Intro />
         <div className={cx(styles.center)}>
           <div className={cx(styles.row)}>
             <Map
               filterOptions={filterOptions}
               setFilterOptions={setFilterOptions}
+              setSelectedIdx={setSelectedIdx}
             />
             <Scatterplot
-              hoveredIdx={hoveredIdx}
-              setHoveredIdx={setHoveredIdx}
+              selectedIdx={selectedIdx}
+              setSelectedIdx={setSelectedIdx}
               data={data}
               filteredDataIdxs={filteredDataIdxs}
+              setFilterOptions={setFilterOptions}
             />
           </div>
         </div>
@@ -173,6 +177,7 @@ function Index({ data }) {
                 small
                 onClick={() => {
                   setFilterOptions({})
+                  setSelectedIdx(-1)
                 }}
               >
                 Clear All

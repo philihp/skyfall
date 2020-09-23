@@ -4,4 +4,5 @@ Core.initialize({
   defaultLocale: 'en',
   defaultTimezone: 'UTC',
   name: 'AppName',
+  fontFamily: 'WhyteBook',
 })

@@ -29,7 +29,7 @@ export default function Header() {
       <div className={cx(styles.header)}>
         <div className={cx(styles.row)}>
           <img src="/logo-large.png" className={cx(styles.logo)} alt="logo" />
-          <Title level={3}>Data to the People</Title>
+          <Title level={3}>Data 2 the People</Title>
         </div>
         <div className={cx(styles.row)}>
           <Spacing right={2}>
