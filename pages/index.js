@@ -9,6 +9,7 @@ import { Item } from '@airbnb/lunar/lib/components/Menu'
 
 import Dropdown from '../components/Dropdown'
 import Header from '../components/Header'
+import Intro from '../components/Intro'
 import Scatterplot from '../components/Scatterplot'
 import Map from '../components/Map'
 import { FILTER_FIELDS, BREAK_CHAR } from '../setup/config'
@@ -148,6 +149,7 @@ function Index({ data, columns }) {
     <div className={styles.container}>
       <Header />
       <Spacing all={3}>
+        <Intro />
         <div className={cx(styles.center)}>
           <div className={cx(styles.row)}>
             <Map
