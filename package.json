@@ -14,8 +14,8 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
-    "@airbnb/lunar": "^3.26.0",
-    "@airbnb/lunar-icons": "^3.1.1",
+    "@airbnb/lunar": "3.26.0",
+    "@airbnb/lunar-icons": "3.1.1",
     "neat-csv": "5.2.0",
     "next": "9.5.3",
     "react": "16.13.1",
@@ -31,8 +31,8 @@
     "@philihp/eslint-config": "3.0.2",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.4",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.4.0"
+    "husky": "4.3.0",
+    "lint-staged": "10.4.0"
   },
   "lint-staged": {
     "**/*.{js,jsx,json}": [
