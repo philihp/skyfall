@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import DataTable from 'react-data-table-component'
 import Head from 'next/head'
+
 import Autocomplete from '@airbnb/lunar/lib/components/Autocomplete'
+
 import useStyles from '@airbnb/lunar/lib/hooks/useStyles'
 import { readData, readColumns } from '../lib/readData'
 
