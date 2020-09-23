@@ -2,6 +2,7 @@
   "extends": ["@philihp"],
   "rules": {
     "react/prop-types": "off",
-    "camelcase": "off"
+    "camelcase": "off",
+    "react/no-array-index-key": "off"
   }
 }

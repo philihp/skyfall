@@ -3,6 +3,10 @@ import DataTable from 'react-data-table-component'
 import Head from 'next/head'
 
 import Autocomplete from '@airbnb/lunar/lib/components/Autocomplete'
+import { AxisBottom, AxisLeft } from '@visx/axis'
+import { Circle } from '@visx/shape'
+import { Group } from '@visx/group'
+import { scaleLinear } from '@visx/scale'
 
 import useStyles from '@airbnb/lunar/lib/hooks/useStyles'
 import { readData, readColumns } from '../lib/readData'
@@ -14,8 +18,8 @@ const styleSheet = () => ({
 })
 
 const FILTER_FIELDS = {
-  office_type: {},
-  incumbent_running_2020: {},
+  candidate_gender: {},
+  state: {},
   amt_raised_diff_pct_2018: {
     num_buckets: 5,
   },
@@ -23,13 +27,22 @@ const FILTER_FIELDS = {
 
 const BREAK_CHAR = ',,,'
 
-// TODO: Sorting doesn't work correct on string dollar values
-// TODO: CSS-in-JS
-// TODO: Sorting assumes it's possible to Number.parseFloat
+// TODO: Sorting doesn't work correct on string dollar values.
+// TODO: CSS-in-JS.
+// TODO: Sorting assumes it's possible to Number.parseFloat.
+// TODO: Memoize.
+// TODO: Option cardinality is low, replace autocomplete with dropdown.
+// TODO: Toggle for card / list view
+// TODO: Use unique persistent keys instead of idx and enable react/no-array-index-key
+
+const dollarToFloat = (dollar) =>
+  Number.parseFloat(dollar.replace('$', '').replace(',', ''))
+const stringNumToFloat = (str) => Number.parseFloat(str.replace(',', ''))
 
 function Index({ data, columns }) {
   const [styles, cx] = useStyles(styleSheet)
   const [filterOptions, setFilterOptions] = useState({})
+  const [hoveredIdx, setHoveredIdx] = useState(-1)
 
   const filters = Object.keys(FILTER_FIELDS).map((field) => {
     let options = new Set(data.map((row) => row[field]))
@@ -83,8 +96,11 @@ function Index({ data, columns }) {
     )
   })
 
-  const filteredData = data.filter((row) => {
+  const filteredData = data.filter((row, idx) => {
     let shouldRender = true
+    if (hoveredIdx > 0 && hoveredIdx !== idx) {
+      return false
+    }
     Object.keys(filterOptions).forEach((filterOptionKey) => {
       const { num_buckets } = FILTER_FIELDS[filterOptionKey]
       if (filterOptions[filterOptionKey] !== '') {
@@ -108,6 +124,79 @@ function Index({ data, columns }) {
     })
     return shouldRender
   })
+
+  const width = 400
+  const height = 400
+  const margin = 80
+  const xField = 'amt_raised_diff_2020'
+  const yField = 'vote_diff_2018'
+
+  let minX = Infinity
+  let maxX = -Infinity
+  let minY = Infinity
+  let maxY = -Infinity
+  const scatterData = []
+  data.forEach((row) => {
+    const x = dollarToFloat(row[xField])
+    const y = stringNumToFloat(row[yField])
+    minX = Math.min(minX, x)
+    maxX = Math.max(maxX, x)
+    minY = Math.min(minY, y)
+    maxY = Math.max(maxY, y)
+    scatterData.push({
+      x,
+      y,
+    })
+  })
+
+  const xScale = scaleLinear({
+    domain: [minX, maxX],
+    range: [margin, width - margin],
+  })
+
+  const yScale = scaleLinear({
+    domain: [minY, maxY],
+    range: [height - margin, margin],
+  })
+
+  const chart = (
+    <svg width={width} height={height}>
+      <Group>
+        {scatterData.map((point, i) => (
+          <Group>
+            <Circle
+              key={`point-${i}`}
+              cx={xScale(point.x)}
+              cy={yScale(point.y)}
+              r={3}
+              fill="#3664fa"
+            />
+            <Circle
+              key={`point-${i}-target`}
+              cx={xScale(point.x)}
+              cy={yScale(point.y)}
+              r={10}
+              fill="red"
+              opacity={0.04}
+              onMouseOver={() => {
+                setHoveredIdx(i)
+              }}
+              onMouseLeave={() => {
+                setHoveredIdx(-1)
+              }}
+            />
+          </Group>
+        ))}
+      </Group>
+      <AxisLeft scale={yScale} left={margin} label={yField} />
+      <AxisBottom
+        top={height - margin}
+        scale={xScale}
+        label={xField}
+        numTicks={4}
+      />
+    </svg>
+  )
 
   return (
     <div className={styles.container}>
@@ -137,6 +226,7 @@ function Index({ data, columns }) {
       <main className={styles.main}>
         <h1 className={styles.title}>Donate</h1>
         <p className={styles.description}>Make every dollar count</p>
+        {chart}
         <div className={cx(styles.row)}>{filters}</div>
         <div className={styles.grid}>
           <DataTable
@@ -164,6 +254,7 @@ function Index({ data, columns }) {
 export const getStaticProps = async () => {
   const data = await readData()
   const columns = await readColumns()
+
   return {
     props: {
       data,
