@@ -2,9 +2,11 @@ import React, { useState, useMemo } from 'react'
 import DataTable from 'react-data-table-component'
 import useStyles from '@airbnb/lunar/lib/hooks/useStyles'
 
-import Autocomplete from '@airbnb/lunar/lib/components/Autocomplete'
 import Spacing from '@airbnb/lunar/lib/components/Spacing'
+import Text from '@airbnb/lunar/lib/components/Text'
+import { Item } from '@airbnb/lunar/lib/components/Menu'
 
+import Dropdown from '../components/Dropdown'
 import Header from '../components/Header'
 import Scatterplot from '../components/Scatterplot'
 import { FILTER_FIELDS, BREAK_CHAR } from '../setup/config'
@@ -58,29 +60,43 @@ function Index({ data, columns }) {
     return fieldItems
   }, [data])
 
-  const filters = Object.keys(FILTER_FIELDS).map((field) => (
-    <Autocomplete
-      loadItemsOnFocus
-      accessibilityLabel={field}
-      label={field}
-      key={`${field}-autocomplete`}
-      name={`${field}-autocomplete`}
-      onChange={() => {}}
-      onSelectItem={(val) => {
-        setFilterOptions({
-          ...filterOptions,
-          [field]: val,
-        })
-      }}
-      onLoadItems={(value) =>
-        Promise.resolve(
-          menuFieldItems[field].filter((item) =>
-            item.name.toLowerCase().match(value.toLowerCase())
-          )
-        )
-      }
-    />
-  ))
+  const filters = Object.keys(FILTER_FIELDS).map((field) => {
+    const dropdownItems = menuFieldItems[field].map((item) => (
+      <Item
+        onClick={() =>
+          setFilterOptions({
+            ...filterOptions,
+            [field]: item.value,
+          })
+        }
+      >
+        {item.name}
+      </Item>
+    ))
+    return (
+      <Spacing right={2}>
+        <Text small bold>
+          {field}
+        </Text>
+        <Dropdown
+          label={filterOptions[field] || 'All'}
+          accessibilityLabel={field}
+        >
+          {dropdownItems}
+          <Item
+            onClick={() =>
+              setFilterOptions({
+                ...filterOptions,
+                [field]: '',
+              })
+            }
+          >
+            All
+          </Item>
+        </Dropdown>
+      </Spacing>
+    )
+  })
 
   const filteredData = data.filter((row, idx) => {
     let shouldRender = true

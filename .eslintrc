@@ -4,5 +4,9 @@
     "react/prop-types": "off",
     "camelcase": "off",
     "react/no-array-index-key": "off"
+  },
+  // Allows us to use window without getting no-undef
+  "env": {
+    "browser": true
   }
 }

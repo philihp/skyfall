@@ -6,7 +6,7 @@ export const FILTER_FIELDS = {
   },
 }
 
-export const BREAK_CHAR = ',,,'
+export const BREAK_CHAR = ' to '
 
 export const SCATTERPLOT_X_FIELD = 'amt_raised_diff_2020'
 
