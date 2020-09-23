@@ -1,10 +1,73 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DataTable from 'react-data-table-component'
 import Head from 'next/head'
+
+import Autocomplete from '@airbnb/lunar/lib/components/Autocomplete'
+
+import useStyles from '@airbnb/lunar/lib/hooks/useStyles'
 import styles from '../styles/Home.module.css'
 import { readData, readColumns } from '../lib/readData'
 
-const Index = ({ data, columns }) => {
+const styleSheet = () => ({
+  row: {
+    display: 'inline-flex',
+  },
+})
+
+const FILTER_FIELDS = ['office_type', 'incumbent_running_2020']
+
+function Index({ data, columns }) {
+  const [styles, cx] = useStyles(styleSheet)
+  const [filterOptions, setFilterOptions] = useState({})
+
+  const filters = FILTER_FIELDS.map((field) => {
+    const options = new Set(data.map((row) => row[field]))
+    const items = [...options].map((option) => ({
+      value: option,
+      name: option,
+    }))
+
+    return (
+      <Autocomplete
+        loadItemsOnFocus
+        accessibilityLabel={field}
+        label={field}
+        key={`${field}-autocomplete`}
+        name={`${field}-autocomplete`}
+        onChange={() => {}}
+        onSelectItem={(val) => {
+          setFilterOptions({
+            ...filterOptions,
+            [field]: val,
+          })
+        }}
+        onLoadItems={(value) =>
+          Promise.resolve(
+            items.filter((item) =>
+              item.name.toLowerCase().match(value.toLowerCase())
+            )
+          )
+        }
+      />
+    )
+  })
+
+  console.log(filterOptions)
+
+  const filteredData = data.filter((row) => {
+    let shouldFilter = true
+    Object.keys(filterOptions).forEach((filterOptionKey) => {
+      if (
+        filterOptions[filterOptionKey] != '' &&
+        row[filterOptionKey].toLowerCase() !=
+          filterOptions[filterOptionKey].toLowerCase()
+      ) {
+        shouldFilter = false
+      }
+    })
+    return shouldFilter
+  })
+
   return (
     <div className={styles.container}>
       <Head>
@@ -33,8 +96,14 @@ const Index = ({ data, columns }) => {
       <main className={styles.main}>
         <h1 className={styles.title}>Donate</h1>
         <p className={styles.description}>Make every dollar count</p>
+        <div className={cx(styles.row)}>{filters}</div>
         <div className={styles.grid}>
-          <DataTable highlightOnHover noHeader columns={columns} data={data} />
+          <DataTable
+            highlightOnHover
+            noHeader
+            columns={columns}
+            data={filteredData}
+          />
         </div>
       </main>
 
