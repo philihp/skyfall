@@ -1,9 +1,9 @@
 import React from 'react'
-import { Head as NextHead } from 'next/head'
+import Head from 'next/head'
 
-export default function Head() {
+export default function MetaHead() {
   return (
-    <NextHead>
+    <Head>
       <title>Donate with Data2thePeople</title>
       <link
         rel="apple-touch-icon"
@@ -24,6 +24,6 @@ export default function Head() {
       />
       <link rel="manifest" href="/site.webmanifest" />
       <link rel="icon" href="/favicon.ico" />
-    </NextHead>
+    </Head>
   )
 }
