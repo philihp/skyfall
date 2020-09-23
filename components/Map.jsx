@@ -61,11 +61,6 @@ const MapChart = ({ filterOptions, setFilterOptions }) => {
               {geographies.map((geo) => (
                 <g cursor={statesSet.has(geo.properties.name) ? 'pointer' : ''}>
                   <Geography
-                    style={{
-                      cursor: 'pointer',
-                      fill: 'red',
-                      border: '1px solid black',
-                    }}
                     key={geo.rsmKey}
                     stroke="#FFF"
                     geography={geo}
