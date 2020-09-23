@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react'
 import DataTable from 'react-data-table-component'
 import useStyles from '@airbnb/lunar/lib/hooks/useStyles'
 
+import Button from '@airbnb/lunar/lib/components/Button'
 import Spacing from '@airbnb/lunar/lib/components/Spacing'
 import Text from '@airbnb/lunar/lib/components/Text'
 import { Item } from '@airbnb/lunar/lib/components/Menu'
@@ -15,8 +16,9 @@ import { stringNumToFloat } from '../utils/utils'
 
 const styleSheet = () => ({
   row: {
-    display: 'flex',
-    alignItems: 'center',
+    display: 'inline-flex',
+    alignItems: 'flex-end',
+    margin: 'auto',
   },
 })
 
@@ -52,7 +54,7 @@ function Index({ data, columns }) {
           value: `${
             idx === 0 ? -Infinity : options[idx - 1]
           }${BREAK_CHAR}${option}`,
-          name: `${idx === 0 ? '<' : `${options[idx - 1]} – `}${option}`,
+          name: `${idx === 0 ? '<' : `${options[idx - 1]} to `}${option}`,
         }))
       }
 
@@ -75,7 +77,7 @@ function Index({ data, columns }) {
       </Item>
     ))
     return (
-      <Spacing right={2}>
+      <Spacing left={3}>
         <Text small bold>
           {field}
         </Text>
@@ -148,7 +150,17 @@ function Index({ data, columns }) {
           data={data}
           filteredDataIdxs={filteredDataIdxs}
         />
-        <div className={cx(styles.row)}>{filters}</div>
+        <div className={cx(styles.row)}>
+          <Button
+            small
+            onClick={() => {
+              setFilterOptions({})
+            }}
+          >
+            Clear All
+          </Button>
+          {filters}
+        </div>
         <DataTable
           highlightOnHover
           noHeader
