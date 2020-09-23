@@ -5,7 +5,6 @@ import Head from 'next/head'
 import Autocomplete from '@airbnb/lunar/lib/components/Autocomplete'
 
 import useStyles from '@airbnb/lunar/lib/hooks/useStyles'
-import styles from '../styles/Home.module.css'
 import { readData, readColumns } from '../lib/readData'
 
 const styleSheet = () => ({
