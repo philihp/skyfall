@@ -148,7 +148,6 @@ function Index({ data }) {
     })
     .map((idx) => data[idx])
 
-  console.log(namedAndStyledColumns)
   return (
     <div className={styles.container}>
       <Header />
