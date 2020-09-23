@@ -11,8 +11,12 @@ import Dropdown from '../components/Dropdown'
 import Header from '../components/Header'
 import Scatterplot from '../components/Scatterplot'
 import Map from '../components/Map'
-import { FILTER_FIELDS, BREAK_CHAR } from '../setup/config'
-import { readData, readColumns } from '../lib/readData'
+import {
+  namedAndStyledColumns,
+  FILTER_FIELDS,
+  BREAK_CHAR,
+} from '../setup/config'
+import readData from '../lib/readData'
 import { stringNumToFloat } from '../utils/utils'
 
 const styleSheet = () => ({
@@ -26,7 +30,7 @@ const styleSheet = () => ({
   },
 })
 
-function Index({ data, columns }) {
+function Index({ data }) {
   const [styles, cx] = useStyles(styleSheet)
   const [filterOptions, setFilterOptions] = useState({})
   const [hoveredIdx, setHoveredIdx] = useState(-1)
@@ -144,6 +148,7 @@ function Index({ data, columns }) {
     })
     .map((idx) => data[idx])
 
+  console.log(namedAndStyledColumns)
   return (
     <div className={styles.container}>
       <Header />
@@ -180,7 +185,7 @@ function Index({ data, columns }) {
         <DataTable
           noHeader
           highlightOnHover
-          columns={columns}
+          columns={namedAndStyledColumns}
           data={filteredData}
         />
       </Spacing>
@@ -190,12 +195,10 @@ function Index({ data, columns }) {
 
 export const getStaticProps = async () => {
   const data = await readData()
-  const columns = await readColumns()
 
   return {
     props: {
       data,
-      columns,
     },
   }
 }
