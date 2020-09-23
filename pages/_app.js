@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/globals.css'
+import '../setup/setTheme'
 
 // eslint-disable-next-line react/prop-types
 function MyApp({ Component, pageProps }) {
