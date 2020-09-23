@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { AxisBottom, AxisLeft } from '@visx/axis'
 import { Circle } from '@visx/shape'
 import { Group } from '@visx/group'
@@ -16,33 +16,44 @@ export default function Scatterplot({
   data,
   setHoveredIdx,
 }) {
-  let minX = Infinity
-  let maxX = -Infinity
-  let minY = Infinity
-  let maxY = -Infinity
-  const scatterData = []
-  data.forEach((row) => {
-    const x = dollarToFloat(row[xField])
-    const y = stringNumToFloat(row[yField])
-    minX = Math.min(minX, x)
-    maxX = Math.max(maxX, x)
-    minY = Math.min(minY, y)
-    maxY = Math.max(maxY, y)
-    scatterData.push({
-      x,
-      y,
+  const memoData = useMemo(() => {
+    let minX = Infinity
+    let maxX = -Infinity
+    let minY = Infinity
+    let maxY = -Infinity
+    const scatterData = []
+
+    data.forEach((row) => {
+      const x = dollarToFloat(row[xField])
+      const y = stringNumToFloat(row[yField])
+      minX = Math.min(minX, x)
+      maxX = Math.max(maxX, x)
+      minY = Math.min(minY, y)
+      maxY = Math.max(maxY, y)
+      scatterData.push({
+        x,
+        y,
+      })
     })
-  })
 
-  const xScale = scaleLinear({
-    domain: [minX, maxX],
-    range: [margin, width - margin],
-  })
+    const xScale = scaleLinear({
+      domain: [minX, maxX],
+      range: [margin, width - margin],
+    })
 
-  const yScale = scaleLinear({
-    domain: [minY, maxY],
-    range: [height - margin, margin],
-  })
+    const yScale = scaleLinear({
+      domain: [minY, maxY],
+      range: [height - margin, margin],
+    })
+
+    return {
+      scatterData,
+      xScale,
+      yScale,
+    }
+  }, [xField, yField, data, height, width, margin])
+
+  const { scatterData, xScale, yScale } = memoData
 
   return (
     <svg width={width} height={height}>
