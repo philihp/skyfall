@@ -158,6 +158,6 @@ export const namedAndStyledColumns = activeColumns.map((col) => ({
     CUSTOM_COLUMN_NAMES[col.selector] !== undefined
       ? CUSTOM_COLUMN_NAMES[col.selector]
       : `${col.selector[0].toUpperCase()}${col.selector
-          .replace('_', ' ')
+          .replaceAll('_', ' ')
           .slice(1)}`,
 }))
