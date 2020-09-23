@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import DataTable from 'react-data-table-component'
 import useStyles from '@airbnb/lunar/lib/hooks/useStyles'
 
@@ -22,57 +22,65 @@ function Index({ data, columns }) {
   const [filterOptions, setFilterOptions] = useState({})
   const [hoveredIdx, setHoveredIdx] = useState(-1)
 
-  const filters = Object.keys(FILTER_FIELDS).map((field) => {
-    let options = new Set(data.map((row) => row[field]))
-    let items = [...options].map((option) => ({
-      value: option,
-      name: option,
-    }))
-
-    const { num_buckets } = FILTER_FIELDS[field]
-    if (num_buckets != null) {
-      const sortedValues = data
-        .map((row) => row[field])
-        .sort((a, b) => Number.parseFloat(a) - Number.parseFloat(b))
-      options = new Array(num_buckets)
-        .fill(0)
-        .map((_, idx) =>
-          Number.parseFloat(
-            sortedValues[Math.floor((sortedValues.length * idx) / num_buckets)]
-          )
-        )
-      items = [...options].map((option, idx) => ({
-        value: `${
-          idx === 0 ? -Infinity : options[idx - 1]
-        }${BREAK_CHAR}${option}`,
-        name: `${idx === 0 ? '<' : `${options[idx - 1]} – `}${option}`,
+  const menuFieldItems = useMemo(() => {
+    const fieldItems = {}
+    Object.keys(FILTER_FIELDS).forEach((field) => {
+      let options = new Set(data.map((row) => row[field]))
+      let items = [...options].map((option) => ({
+        value: option,
+        name: option,
       }))
-    }
 
-    return (
-      <Autocomplete
-        loadItemsOnFocus
-        accessibilityLabel={field}
-        label={field}
-        key={`${field}-autocomplete`}
-        name={`${field}-autocomplete`}
-        onChange={() => {}}
-        onSelectItem={(val) => {
-          setFilterOptions({
-            ...filterOptions,
-            [field]: val,
-          })
-        }}
-        onLoadItems={(value) =>
-          Promise.resolve(
-            items.filter((item) =>
-              item.name.toLowerCase().match(value.toLowerCase())
+      const { num_buckets } = FILTER_FIELDS[field]
+      if (num_buckets != null) {
+        const sortedValues = data
+          .map((row) => row[field])
+          .sort((a, b) => Number.parseFloat(a) - Number.parseFloat(b))
+        options = new Array(num_buckets)
+          .fill(0)
+          .map((_, idx) =>
+            Number.parseFloat(
+              sortedValues[
+                Math.floor((sortedValues.length * idx) / num_buckets)
+              ]
             )
           )
-        }
-      />
-    )
-  })
+        items = [...options].map((option, idx) => ({
+          value: `${
+            idx === 0 ? -Infinity : options[idx - 1]
+          }${BREAK_CHAR}${option}`,
+          name: `${idx === 0 ? '<' : `${options[idx - 1]} – `}${option}`,
+        }))
+      }
+
+      fieldItems[field] = items
+    })
+    return fieldItems
+  }, [data])
+
+  const filters = Object.keys(FILTER_FIELDS).map((field) => (
+    <Autocomplete
+      loadItemsOnFocus
+      accessibilityLabel={field}
+      label={field}
+      key={`${field}-autocomplete`}
+      name={`${field}-autocomplete`}
+      onChange={() => {}}
+      onSelectItem={(val) => {
+        setFilterOptions({
+          ...filterOptions,
+          [field]: val,
+        })
+      }}
+      onLoadItems={(value) =>
+        Promise.resolve(
+          menuFieldItems[field].filter((item) =>
+            item.name.toLowerCase().match(value.toLowerCase())
+          )
+        )
+      }
+    />
+  ))
 
   const filteredData = data.filter((row, idx) => {
     let shouldRender = true

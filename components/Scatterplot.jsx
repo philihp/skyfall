@@ -51,6 +51,7 @@ export default function Scatterplot({
       xScale,
       yScale,
     }
+    // This should never get recomputed, but we'll add the depency array just in case.
   }, [xField, yField, data, height, width, margin])
 
   const { scatterData, xScale, yScale } = memoData
