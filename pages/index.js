@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import DataTable from 'react-data-table-component'
 import Head from 'next/head'
+
 import Autocomplete from '@airbnb/lunar/lib/components/Autocomplete'
+
 import useStyles from '@airbnb/lunar/lib/hooks/useStyles'
 import { readData, readColumns } from '../lib/readData'
 
@@ -11,18 +13,50 @@ const styleSheet = () => ({
   },
 })
 
-const FILTER_FIELDS = ['office_type', 'incumbent_running_2020']
+const FILTER_FIELDS = {
+  office_type: {},
+  incumbent_running_2020: {},
+  amt_raised_diff_pct_2018: {
+    num_buckets: 5,
+  },
+}
+
+const BREAK_CHAR = ',,,'
+
+// TODO: Sorting doesn't work correct on string dollar values
+// TODO: CSS-in-JS
+// TODO: Sorting assumes it's possible to Number.parseFloat
 
 function Index({ data, columns }) {
   const [styles, cx] = useStyles(styleSheet)
   const [filterOptions, setFilterOptions] = useState({})
 
-  const filters = FILTER_FIELDS.map((field) => {
-    const options = new Set(data.map((row) => row[field]))
-    const items = [...options].map((option) => ({
+  const filters = Object.keys(FILTER_FIELDS).map((field) => {
+    let options = new Set(data.map((row) => row[field]))
+    let items = [...options].map((option) => ({
       value: option,
       name: option,
     }))
+
+    const { num_buckets } = FILTER_FIELDS[field]
+    if (num_buckets != null) {
+      const sortedValues = data
+        .map((row) => row[field])
+        .sort((a, b) => Number.parseFloat(a) - Number.parseFloat(b))
+      options = new Array(num_buckets)
+        .fill(0)
+        .map((_, idx) =>
+          Number.parseFloat(
+            sortedValues[Math.floor((sortedValues.length * idx) / num_buckets)]
+          )
+        )
+      items = [...options].map((option, idx) => ({
+        value: `${
+          idx === 0 ? -Infinity : options[idx - 1]
+        }${BREAK_CHAR}${option}`,
+        name: `${idx === 0 ? '<' : `${options[idx - 1]} – `}${option}`,
+      }))
+    }
 
     return (
       <Autocomplete
@@ -49,20 +83,30 @@ function Index({ data, columns }) {
     )
   })
 
-  console.log(filterOptions)
-
   const filteredData = data.filter((row) => {
-    let shouldFilter = true
+    let shouldRender = true
     Object.keys(filterOptions).forEach((filterOptionKey) => {
-      if (
-        filterOptions[filterOptionKey] !== '' &&
-        row[filterOptionKey].toLowerCase() !==
+      const { num_buckets } = FILTER_FIELDS[filterOptionKey]
+      if (filterOptions[filterOptionKey] !== '') {
+        if (num_buckets !== undefined) {
+          const range = filterOptions[filterOptionKey].split(BREAK_CHAR)
+          if (
+            Number.parseFloat(row[filterOptionKey]) <
+              Number.parseFloat(range[0]) ||
+            Number.parseFloat(row[filterOptionKey]) >
+              Number.parseFloat(range[1])
+          ) {
+            shouldRender = false
+          }
+        } else if (
+          row[filterOptionKey].toLowerCase() !==
           filterOptions[filterOptionKey].toLowerCase()
-      ) {
-        shouldFilter = false
+        ) {
+          shouldRender = false
+        }
       }
     })
-    return shouldFilter
+    return shouldRender
   })
 
   return (
