@@ -178,8 +178,8 @@ function Index({ data, columns }) {
           </div>
         </Spacing>
         <DataTable
-          highlightOnHover
           noHeader
+          highlightOnHover
           columns={columns}
           data={filteredData}
         />
