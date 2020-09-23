@@ -1,6 +1,6 @@
 import React from 'react'
-import Head from 'next/head'
 import DataTable from 'react-data-table-component'
+import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { readData, readColumns } from '../lib/readData'
 
