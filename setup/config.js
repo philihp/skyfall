@@ -3,11 +3,13 @@ import Link from '@airbnb/lunar/lib/components/Link'
 import { stringNumToFloat } from '../utils/utils'
 
 export const FILTER_FIELDS = {
-  candidate_gender: {},
+  dem_candidate_gender: {},
   state: {},
-  vote_diff_2018: {
-    numBuckets: 5,
-  },
+}
+
+export const FILTER_NAMES = {
+  dem_candidate_gender: 'Candidate gender',
+  state: 'State',
 }
 
 export const D2P_COLORS = {
@@ -30,6 +32,7 @@ export const CUSTOM_COLUMN_NAMES = {
   dem_candidate: '',
   state: 'State',
   district: '',
+  vote_diff_pct_2018: 'Vote difference in this district, 2018',
   amt_raised_ratio_2018: 'Ratio of Rep:Dem fundraising, 2018',
   amt_raised_ratio_2020: 'Ratio of Rep:Dem fundraising, 2020',
 }
@@ -37,6 +40,7 @@ export const CUSTOM_COLUMN_NAMES = {
 export const ACTIVE_COLUMNS = [
   'dem_candidate',
   'district',
+  'vote_diff_pct_2018',
   'amt_raised_ratio_2018',
   'amt_raised_ratio_2020',
 ]
@@ -57,6 +61,9 @@ export const CUSTOM_COLUMN_FORMATTERS = {
   },
   district: (row) => {
     return `${row.state} House district ${row.district}`
+  },
+  vote_diff_pct_2018: (row) => {
+    return `${Number.parseFloat(row.vote_diff_pct_2018 * 100).toFixed(2)} pts`
   },
 }
 
@@ -87,6 +94,22 @@ export const CUSTOM_RENDERERS = {
     },
     {
       when: (row) => stringNumToFloat(row.amt_raised_ratio_2020) > 1,
+      style: {
+        color: D2P_COLORS.red,
+        fontWeight: 'bold',
+      },
+    },
+  ],
+  vote_diff_pct_2018: [
+    {
+      when: (row) => stringNumToFloat(row.vote_diff_pct_2018) < 0,
+      style: {
+        color: D2P_COLORS.blue,
+        fontWeight: 'bold',
+      },
+    },
+    {
+      when: (row) => stringNumToFloat(row.vote_diff_pct_2018) > 0,
       style: {
         color: D2P_COLORS.red,
         fontWeight: 'bold',

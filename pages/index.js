@@ -18,6 +18,7 @@ import {
   CUSTOM_COLUMN_FORMATTERS,
   ACTIVE_COLUMNS,
   FILTER_FIELDS,
+  FILTER_NAMES,
   BREAK_CHAR,
   CUSTOM_RENDERERS,
 } from '../setup/config'
@@ -91,7 +92,7 @@ function Index({ data }) {
     return (
       <Spacing left={3}>
         <Text small bold>
-          {field}
+          {FILTER_NAMES[field]}
         </Text>
         <Dropdown
           label={filterOptions[field] || 'All'}
