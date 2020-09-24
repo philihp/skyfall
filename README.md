@@ -13,6 +13,4 @@ In `setup/config`, you can set the fields you want to build filters for to gener
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Thanks
-
-![[Vercel](./public/vercel.svg =250x)](https://vercel.com?utm_source=data2thepeople-org&utm_campaign=oss)
+![Vercel](./public/vercel.svg)
