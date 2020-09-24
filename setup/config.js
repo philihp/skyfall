@@ -21,7 +21,7 @@ export const D2P_COLORS = {
 export const BREAK_CHAR = ' to '
 
 export const SCATTERPLOT_X_FIELD = 'amt_raised_ratio_2018'
-export const SCATTERPLOT_X_LABEL = 'Ratio Rep:Dem of funding in 2018'
+export const SCATTERPLOT_X_LABEL = 'Ratio Rep:Dem fundraising in 2018'
 
 export const SCATTERPLOT_Y_FIELD = 'vote_diff_2018'
 export const SCATTERPLOT_Y_LABEL = 'Difference in votes in 2018'
