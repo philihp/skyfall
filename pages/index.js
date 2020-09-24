@@ -19,6 +19,7 @@ import {
   ACTIVE_COLUMNS,
   FILTER_FIELDS,
   BREAK_CHAR,
+  CUSTOM_RENDERERS,
 } from '../setup/config'
 import { stringNumToFloat } from '../utils/utils'
 
@@ -161,6 +162,10 @@ function Index({ data }) {
       CUSTOM_COLUMN_FORMATTERS[property] === undefined
         ? null
         : CUSTOM_COLUMN_FORMATTERS[property],
+    conditionalCellStyles:
+      CUSTOM_RENDERERS[property] === undefined
+        ? {}
+        : CUSTOM_RENDERERS[property],
   }))
 
   return (
