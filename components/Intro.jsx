@@ -42,11 +42,12 @@ const Intro = () => {
         <br />
         To start, we’ve focused on historical election outcome data and current
         fundraising data for the 2020 cycle. We’ve identified 61 priority state
-        House races. You can donate to one fund which will be distributed among
-        these candidates, or you can explore individual races here on this page.
+        House races. You can explore individual races here on this page, or
+        click the button below to donate to one fund which will be distributed
+        among the 10 races we&apos;ve identified as the highest priority.
         <div className={cx(styles.button)}>
-          <Button href="https://secure.actblue.com/donate/blog_state_house_1">
-            Donate to all these races via ActBlue
+          <Button href="https://secure.actblue.com/donate/blog_state_house_top_10">
+            Donate via ActBlue
           </Button>
         </div>
         Our goal is to be transparent about our process so that we all can make
@@ -54,7 +55,7 @@ const Intro = () => {
         down the ballot! We will update this analysis as we collect additional
         data and welcome your comments and ideas! For details on our
         methodology, see our&nbsp;
-        <Link href="https://www.data2thepeople.org/">
+        <Link href="https://www.data2thepeople.org/post/dems-donate-where-your-money-can-make-the-biggest-impact">
           accompanying blog post
         </Link>
         .
