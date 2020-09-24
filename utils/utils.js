@@ -1,5 +1,5 @@
 export const dollarToFloat = (dollar) =>
-  Number.parseFloat(dollar.replace('$', ''))
+  dollar ? Number.parseFloat(dollar.replace('$', '')) : null
 
 export const stringNumToFloat = (str) =>
   str === undefined ? undefined : Number.parseFloat(str.replace(',', ''))

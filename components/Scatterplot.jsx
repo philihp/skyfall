@@ -4,7 +4,12 @@ import { Circle } from '@visx/shape'
 import { Group } from '@visx/group'
 import { scaleLinear } from '@visx/scale'
 
-import { SCATTERPLOT_X_FIELD, SCATTERPLOT_Y_FIELD } from '../setup/config'
+import {
+  SCATTERPLOT_X_FIELD,
+  SCATTERPLOT_Y_FIELD,
+  SCATTERPLOT_X_LABEL,
+  SCATTERPLOT_Y_LABEL,
+} from '../setup/config'
 import { dollarToFloat, stringNumToFloat } from '../utils/utils'
 
 export default function Scatterplot({
@@ -13,6 +18,8 @@ export default function Scatterplot({
   margin = 55,
   xField = SCATTERPLOT_X_FIELD,
   yField = SCATTERPLOT_Y_FIELD,
+  xLabel = SCATTERPLOT_X_LABEL,
+  yLabel = SCATTERPLOT_Y_LABEL,
   data,
   filteredDataIdxs,
   selectedIdx,
@@ -71,7 +78,7 @@ export default function Scatterplot({
               key={`point-${i}`}
               cx={xScale(point.x)}
               cy={yScale(point.y)}
-              stroke="#6f44ff"
+              stroke="#00B36B"
               r={hoveredIdx === i ? 4 : 3}
               opacity={
                 selectedIdx === i ||
@@ -80,14 +87,14 @@ export default function Scatterplot({
                   : 0.15
               }
               strokeWidth={hoveredIdx === i ? 3 : 0}
-              fill={hoveredIdx === i ? 'white' : '#6f44ff'}
+              fill={hoveredIdx === i ? 'white' : '#00B36B'}
             />
             <Circle
               key={`point-${i}-target`}
               cx={xScale(point.x)}
               cy={yScale(point.y)}
               r={10}
-              fill="#6f44ff"
+              fill="#00B36B"
               opacity={
                 selectedIdx === i ||
                 (selectedIdx === -1 && filteredIdxSet.has(i))
@@ -108,11 +115,11 @@ export default function Scatterplot({
           </Group>
         ))}
       </Group>
-      <AxisLeft scale={yScale} left={margin} label={yField} />
+      <AxisLeft scale={yScale} left={margin} label={yLabel} />
       <AxisBottom
         top={height - margin}
         scale={xScale}
-        label={xField}
+        label={xLabel}
         numTicks={4}
       />
     </svg>
