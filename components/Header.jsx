@@ -38,7 +38,7 @@ export default function Header() {
             </Link>
           </Spacing>
           <Spacing right={2}>
-            <Link bold href="https://secure.actblue.com/donate/d2p-live-1">
+            <Link bold href="https://www.data2thepeople.org/donate">
               Donate
             </Link>
           </Spacing>
