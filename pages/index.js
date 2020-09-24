@@ -189,6 +189,7 @@ function Index({ data }) {
             />
           </div>
         </div>
+
         <Spacing vertical={3}>
           <div className={cx(styles.center)}>
             <div className={cx(styles.row)}>

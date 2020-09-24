@@ -78,7 +78,7 @@ export default function Scatterplot({
               key={`point-${i}`}
               cx={xScale(point.x)}
               cy={yScale(point.y)}
-              stroke="#6f44ff"
+              stroke="#00B36B"
               r={hoveredIdx === i ? 4 : 3}
               opacity={
                 selectedIdx === i ||
@@ -87,14 +87,14 @@ export default function Scatterplot({
                   : 0.15
               }
               strokeWidth={hoveredIdx === i ? 3 : 0}
-              fill={hoveredIdx === i ? 'white' : '#6f44ff'}
+              fill={hoveredIdx === i ? 'white' : '#00B36B'}
             />
             <Circle
               key={`point-${i}-target`}
               cx={xScale(point.x)}
               cy={yScale(point.y)}
               r={10}
-              fill="#6f44ff"
+              fill="#00B36B"
               opacity={
                 selectedIdx === i ||
                 (selectedIdx === -1 && filteredIdxSet.has(i))

@@ -69,7 +69,7 @@ const MapChart = ({ filterOptions, setFilterOptions, setSelectedIdx }) => {
                     key={geo.rsmKey}
                     stroke="#FFF"
                     geography={geo}
-                    fill="#6f44ff"
+                    fill="#00B36B"
                     opacity={getOpacity(geo.properties.name)}
                     onClick={() => {
                       if (statesSet.has(geo.properties.name)) {

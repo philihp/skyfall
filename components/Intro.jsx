@@ -1,6 +1,7 @@
 import React from 'react'
 
 import useStyles from '@airbnb/lunar/lib/hooks/useStyles'
+import Button from '@airbnb/lunar/lib/components/Button'
 import Link from '@airbnb/lunar/lib/components/Link'
 
 const styleSheet = () => ({
@@ -12,6 +13,12 @@ const styleSheet = () => ({
     fontSize: 18,
     fontWeight: 'bold',
     margin: '24px 0',
+  },
+  button: {
+    margin: 'auto',
+    display: 'flex',
+    justifyContent: 'center',
+    padding: '18px 0',
   },
 })
 
@@ -35,14 +42,19 @@ const Intro = () => {
         <br />
         To start, we’ve focused on historical election outcome data and current
         fundraising data for the 2020 cycle. We’ve identified 86 priority state
-        legislature races, which you can explore here on this page.
-        <br />
-        <br />
+        legislature races. You can donate to one fund which will be distributed
+        among these candidates, or you can explore individual races here on this
+        page.
+        <div className={cx(styles.button)}>
+          <Button href="https://secure.actblue.com/donate/blog_state_house_1">
+            Donate to all these races via ActBlue
+          </Button>
+        </div>
         Our goal is to be transparent about our process so that we all can make
         clearer decisions and so that Democrats can win big in November, up and
         down the ballot! We will update this analysis as we collect additional
         data and welcome your comments and ideas! For details on our
-        methodology, see our{' '}
+        methodology, see our&nbsp;
         <Link href="https://www.data2thepeople.org/">
           accompanying blog post
         </Link>

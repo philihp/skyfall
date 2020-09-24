@@ -28,9 +28,8 @@ export const SCATTERPLOT_Y_LABEL = 'Difference in votes in 2018'
 
 export const CUSTOM_COLUMN_NAMES = {
   dem_candidate: '',
-  // 'office_type',
   state: 'State',
-  district: 'District',
+  district: '',
   amt_raised_ratio_2018: 'Ratio of Rep:Dem fundraising, 2018',
   amt_raised_ratio_2020: 'Ratio of Rep:Dem fundraising, 2020',
 }
