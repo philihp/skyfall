@@ -14,7 +14,9 @@ import Scatterplot from '../components/Scatterplot'
 import Map from '../components/Map'
 import readData from '../lib/readData'
 import {
-  namedAndStyledColumns,
+  CUSTOM_COLUMN_NAMES,
+  CUSTOM_COLUMN_FORMATTERS,
+  ACTIVE_COLUMNS,
   FILTER_FIELDS,
   BREAK_CHAR,
 } from '../setup/config'
@@ -149,6 +151,18 @@ function Index({ data }) {
     })
     .map((idx) => data[idx])
 
+  const columns = ACTIVE_COLUMNS.map((property) => ({
+    selector: property,
+    name:
+      CUSTOM_COLUMN_NAMES[property] === undefined
+        ? property
+        : CUSTOM_COLUMN_NAMES[property],
+    format:
+      CUSTOM_COLUMN_FORMATTERS[property] === undefined
+        ? null
+        : CUSTOM_COLUMN_FORMATTERS[property],
+  }))
+
   return (
     <div className={styles.container}>
       <Header />
@@ -189,7 +203,7 @@ function Index({ data }) {
         <DataTable
           noHeader
           highlightOnHover
-          columns={namedAndStyledColumns}
+          columns={columns}
           data={filteredData}
         />
       </Spacing>

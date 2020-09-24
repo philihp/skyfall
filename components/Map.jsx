@@ -3,21 +3,29 @@ import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
 import states from '../data/states'
 
 const statesSet = new Set([
-  'Kansas',
-  'Missouri',
   'Colorado',
   'Florida',
-  'North Carolina',
-  'Georgia',
+  'Iowa',
+  'Indiana',
+  'Kansas',
+  'Michigan',
+  'Nevada',
+  'Pennsylvania',
+  'Texas',
+  'Wisconsin',
 ])
 
 const nameToCodes = {
-  Kansas: 'KS',
-  Missouri: 'MO',
   Colorado: 'CO',
   Florida: 'FL',
-  'North Carolina': 'NC',
-  Georgia: 'GA',
+  Iowa: 'IA',
+  Indiana: 'IN',
+  Kansas: 'KS',
+  Michigan: 'MI',
+  Nevada: 'NV',
+  Pennsylvania: 'PA',
+  Texas: 'TX',
+  Wisconsin: 'WI',
 }
 
 // MapChart supports temporary filters on hover, but reverts to the previous configuration onMouseLeave.

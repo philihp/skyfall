@@ -1,3 +1,5 @@
+import React from 'react'
+import Link from '@airbnb/lunar/lib/components/Link'
 import { dollarToFloat } from '../utils/utils'
 
 export const FILTER_FIELDS = {
@@ -10,30 +12,46 @@ export const FILTER_FIELDS = {
 
 export const BREAK_CHAR = ' to '
 
-export const SCATTERPLOT_X_FIELD = 'amt_raised_diff_pct_2018'
+export const SCATTERPLOT_X_FIELD = 'amt_raised_ratio_2018'
 
 export const SCATTERPLOT_Y_FIELD = 'vote_diff_2018'
 
 export const CUSTOM_COLUMN_NAMES = {
-  candidate_name: '',
-  projected_dollars_needed_to_win: 'Dollars to Win',
+  dem_candidate: '',
+  // 'office_type',
+  state: 'State',
+  district: 'District',
+  amt_raised_ratio_2018: 'Ratio of Rep:Dem fundraising, 2018',
+  amt_raised_ratio_2020: 'Ratio of Rep:Dem fundraising, 2020',
 }
 
-export const ACTIVE_COLUMNS = new Set([
-  'candidate_name',
-  'office_type',
+export const ACTIVE_COLUMNS = [
+  'dem_candidate',
   'state',
+  'office_type',
   'district',
-  'incumbent_running_2020',
-  'vote_diff_pct_2018',
-  'amt_raised_diff_2018',
-  'dem_amt_raised_2020',
-  'rep_amt_raised_2020',
-  'amt_raised_diff_2020',
-])
+  'amt_raised_ratio_2018',
+  'amt_raised_ratio_2020',
+]
+
+export const CUSTOM_COLUMN_FORMATTERS = {
+  dem_candidate: (row) => {
+    return (
+      <Link href={row.dem_candidate_website} target="_blank">
+        {row.dem_candidate}
+      </Link>
+    )
+  },
+  amt_raised_ratio_2018: (row) => {
+    return Number.parseFloat(row.amt_raised_ratio_2018).toFixed(2)
+  },
+  amt_raised_ratio_2020: (row) => {
+    return Number.parseFloat(row.amt_raised_ratio_2018).toFixed(2)
+  },
+}
 
 export const CUSTOM_RENDERERS = {
-  amt_raised_diff_2020: [
+  amt_raised_ratio_2018: [
     {
       when: (row) => dollarToFloat(row.amt_raised_diff_2020) < 0,
       style: {
@@ -50,114 +68,3 @@ export const CUSTOM_RENDERERS = {
     },
   ],
 }
-
-const rawColumns = [
-  { selector: 'candidate_name', sortable: true },
-  { selector: 'candidate_gender', sortable: true },
-  { selector: 'candidate_race', sortable: true },
-  { selector: 'state', sortable: true },
-  {
-    selector: 'is_gerrymandering',
-    sortable: true,
-  },
-  {
-    selector: 'is_competitive_senate',
-    sortable: true,
-  },
-  {
-    selector: 'is_presidential_swing',
-    sortable: true,
-  },
-  { selector: 'office_type', sortable: true },
-  { selector: 'district', sortable: true },
-  {
-    selector: 'clinton_vote_share_2016',
-    sortable: true,
-  },
-  {
-    selector: 'dem_state_leg_vote_share_2018',
-    sortable: true,
-  },
-  { selector: 'dem_votes_2018', sortable: true },
-  { selector: 'rep_votes_2018', sortable: true },
-  { selector: 'vote_diff_2018', sortable: true },
-  {
-    selector: 'vote_diff_pct_2018',
-    sortable: true,
-  },
-  {
-    selector: 'dem_amt_raised_2018',
-    sortable: true,
-  },
-  {
-    selector: 'rep_amt_raised_2018',
-    sortable: true,
-  },
-  {
-    selector: 'amt_raised_diff_2018',
-    sortable: true,
-  },
-  {
-    selector: 'amt_raised_diff_pct_2018',
-    sortable: true,
-  },
-  {
-    selector: 'party_in_seat_pre2020',
-    sortable: true,
-  },
-  {
-    selector: 'incumbent_running_2020',
-    sortable: true,
-  },
-  {
-    selector: 'dem_amt_raised_2020',
-    sortable: true,
-  },
-  {
-    selector: 'rep_amt_raised_2020',
-    sortable: true,
-  },
-  {
-    selector: 'amt_raised_diff_2020',
-    sortable: true,
-    conditionalCellStyles: [
-      {
-        when: (row) => row.amt_raised_diff_2020 < 0,
-        style: {
-          backgroundColor: 'rgba(242, 38, 19, 0.9)',
-          color: 'white',
-        },
-      },
-      {
-        when: (row) => row.amt_raised_diff_2020 > 0,
-        style: {
-          backgroundColor: 'rgba(19, 38, 242, 0.9)',
-          color: 'white',
-        },
-      },
-    ],
-  },
-  {
-    selector: 'projected_dollars_needed_to_win',
-    sortable: true,
-  },
-  { selector: 'donations_needed', sortable: true },
-]
-
-const activeColumns = rawColumns.filter((col) =>
-  ACTIVE_COLUMNS.has(col.selector)
-)
-
-export const namedAndStyledColumns = activeColumns.map((col) => ({
-  ...col,
-  conditionalCellStyles:
-    CUSTOM_RENDERERS[col.selector] === undefined
-      ? []
-      : CUSTOM_RENDERERS[col.selector],
-  name:
-    CUSTOM_COLUMN_NAMES[col.selector] !== undefined
-      ? CUSTOM_COLUMN_NAMES[col.selector]
-      : `${col.selector[0].toUpperCase()}${col.selector
-          .replace('_', ' ')
-          .slice(1)}`,
-}))
