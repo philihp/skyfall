@@ -12,6 +12,7 @@ import Header from '../components/Header'
 import Intro from '../components/Intro'
 import Scatterplot from '../components/Scatterplot'
 import Map from '../components/Map'
+import Footer from '../components/Footer'
 import readData from '../lib/readData'
 import {
   CUSTOM_COLUMN_NAMES,
@@ -214,6 +215,7 @@ function Index({ data }) {
           data={filteredData}
         />
       </Spacing>
+      <Footer />
     </div>
   )
 }
