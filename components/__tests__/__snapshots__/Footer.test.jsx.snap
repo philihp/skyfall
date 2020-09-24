@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`footer renders Powered by Vercel 1`] = `
+initialize {
+  "0": Object {
+    "attribs": Object {
+      "class": "jsx-1741997640",
+    },
+    "children": Array [
+      Object {
+        "attribs": Object {
+          "class": "jsx-1741997640",
+          "href": "https://vercel.com?utm_source=data2thepeople-org&utm_campaign=oss",
+        },
+        "children": Array [
+          Object {
+            "data": "Powered by ",
+            "next": Object {
+              "attribs": Object {
+                "alt": "Vercel Logo",
+                "class": "jsx-1741997640 logo",
+                "src": "/vercel.svg",
+              },
+              "children": Array [],
+              "name": "img",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "next": null,
+              "parent": [Circular],
+              "prev": [Circular],
+              "type": "tag",
+              "x-attribsNamespace": Object {
+                "alt": undefined,
+                "class": undefined,
+                "src": undefined,
+              },
+              "x-attribsPrefix": Object {
+                "alt": undefined,
+                "class": undefined,
+                "src": undefined,
+              },
+            },
+            "parent": [Circular],
+            "prev": null,
+            "type": "text",
+          },
+          Object {
+            "attribs": Object {
+              "alt": "Vercel Logo",
+              "class": "jsx-1741997640 logo",
+              "src": "/vercel.svg",
+            },
+            "children": Array [],
+            "name": "img",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "next": null,
+            "parent": [Circular],
+            "prev": Object {
+              "data": "Powered by ",
+              "next": [Circular],
+              "parent": [Circular],
+              "prev": null,
+              "type": "text",
+            },
+            "type": "tag",
+            "x-attribsNamespace": Object {
+              "alt": undefined,
+              "class": undefined,
+              "src": undefined,
+            },
+            "x-attribsPrefix": Object {
+              "alt": undefined,
+              "class": undefined,
+              "src": undefined,
+            },
+          },
+        ],
+        "name": "a",
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "next": null,
+        "parent": [Circular],
+        "prev": null,
+        "type": "tag",
+        "x-attribsNamespace": Object {
+          "class": undefined,
+          "href": undefined,
+        },
+        "x-attribsPrefix": Object {
+          "class": undefined,
+          "href": undefined,
+        },
+      },
+    ],
+    "name": "footer",
+    "namespace": "http://www.w3.org/1999/xhtml",
+    "next": null,
+    "parent": null,
+    "prev": null,
+    "root": Object {
+      "attribs": Object {},
+      "children": Array [
+        [Circular],
+      ],
+      "name": "root",
+      "namespace": "http://www.w3.org/1999/xhtml",
+      "next": null,
+      "parent": null,
+      "prev": null,
+      "type": "root",
+      "x-attribsNamespace": Object {},
+      "x-attribsPrefix": Object {},
+    },
+    "type": "tag",
+    "x-attribsNamespace": Object {
+      "class": undefined,
+    },
+    "x-attribsPrefix": Object {
+      "class": undefined,
+    },
+  },
+  "_root": [Circular],
+  "length": 1,
+  "options": Object {
+    "decodeEntities": true,
+    "normalizeWhitespace": false,
+    "withDomLvl1": true,
+    "xml": false,
+  },
+}
+`;

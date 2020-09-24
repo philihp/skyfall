@@ -12,3 +12,5 @@ In `setup/config`, you can set the fields you want to build filters for to gener
 3. `npm run dev`
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+[![Vercel](./public/vercel.svg)](https://vercel.com?utm_source=data2thepeople-org&utm_campaign=oss)
