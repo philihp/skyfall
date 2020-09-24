@@ -41,10 +41,9 @@ const Intro = () => {
         in need of funds. <br />
         <br />
         To start, we’ve focused on historical election outcome data and current
-        fundraising data for the 2020 cycle. We’ve identified 86 priority state
-        legislature races. You can donate to one fund which will be distributed
-        among these candidates, or you can explore individual races here on this
-        page.
+        fundraising data for the 2020 cycle. We’ve identified 61 priority state
+        House races. You can donate to one fund which will be distributed among
+        these candidates, or you can explore individual races here on this page.
         <div className={cx(styles.button)}>
           <Button href="https://secure.actblue.com/donate/blog_state_house_1">
             Donate to all these races via ActBlue
