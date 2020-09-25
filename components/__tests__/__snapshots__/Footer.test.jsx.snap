@@ -4,63 +4,27 @@ exports[`footer renders Powered by Vercel 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": "jsx-1741997640",
+      "class": "jsx-891755636",
     },
     "children": Array [
       Object {
         "attribs": Object {
-          "class": "jsx-1741997640",
+          "class": "jsx-891755636",
           "href": "https://vercel.com?utm_source=data2thepeople-org&utm_campaign=oss",
         },
         "children": Array [
           Object {
-            "data": "Powered by ",
-            "next": Object {
-              "attribs": Object {
-                "alt": "Vercel Logo",
-                "class": "jsx-1741997640 logo",
-                "src": "/vercel.svg",
-              },
-              "children": Array [],
-              "name": "img",
-              "namespace": "http://www.w3.org/1999/xhtml",
-              "next": null,
-              "parent": [Circular],
-              "prev": [Circular],
-              "type": "tag",
-              "x-attribsNamespace": Object {
-                "alt": undefined,
-                "class": undefined,
-                "src": undefined,
-              },
-              "x-attribsPrefix": Object {
-                "alt": undefined,
-                "class": undefined,
-                "src": undefined,
-              },
-            },
-            "parent": [Circular],
-            "prev": null,
-            "type": "text",
-          },
-          Object {
             "attribs": Object {
-              "alt": "Vercel Logo",
-              "class": "jsx-1741997640 logo",
-              "src": "/vercel.svg",
+              "alt": "Powered by Vercel",
+              "class": "jsx-891755636 logo",
+              "src": "/powered-by-vercel.svg",
             },
             "children": Array [],
             "name": "img",
             "namespace": "http://www.w3.org/1999/xhtml",
             "next": null,
             "parent": [Circular],
-            "prev": Object {
-              "data": "Powered by ",
-              "next": [Circular],
-              "parent": [Circular],
-              "prev": null,
-              "type": "text",
-            },
+            "prev": null,
             "type": "tag",
             "x-attribsNamespace": Object {
               "alt": undefined,

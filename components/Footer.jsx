@@ -3,7 +3,11 @@ import React from 'react'
 const Footer = () => (
   <footer>
     <a href="https://vercel.com?utm_source=data2thepeople-org&utm_campaign=oss">
-      Powered by <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
+      <img
+        src="/powered-by-vercel.svg"
+        alt="Powered by Vercel"
+        className="logo"
+      />
     </a>
     <style jsx>{`
       footer {
@@ -16,7 +20,7 @@ const Footer = () => (
       }
       footer img.logo {
         margin-left: 0.5rem;
-        height: 1em;
+        height: 2em;
       }
       footer a {
         display: flex;
