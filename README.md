@@ -1,5 +1,5 @@
-![Tests](https://github.com/philihp/skyfall/workflows/tests/badge.svg?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/philihp/skyfall/badge.svg?branch=master&force=reload)](https://coveralls.io/github/philihp/skyfall?branch=master)
+![Tests](https://github.com/Data-2-the-People/skyfall/workflows/tests/badge.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/Data-2-the-People/skyfall/badge.svg?branch=master&force=reload)](https://coveralls.io/github/Data-2-the-People/skyfall?branch=master)
 
 Source code the [d2tp](https://www.data2thepeople.org) donation optimization website.
 
@@ -7,7 +7,7 @@ In `setup/config`, you can set the fields you want to build filters for to gener
 
 ## Getting Started
 
-1. `git clone https://github.com/philihp/skyfall.git`
+1. `git clone https://github.com/Data-2-the-People/skyfall.git`
 2. `npm install`
 3. `npm run dev`
 
