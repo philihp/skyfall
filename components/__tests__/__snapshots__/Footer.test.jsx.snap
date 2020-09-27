@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`footer renders Powered by Vercel 1`] = `
+exports[`Footer renders Powered by Vercel 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {

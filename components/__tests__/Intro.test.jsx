@@ -1,11 +1,11 @@
 import React from 'react'
 import { render } from 'enzyme'
-import Header from '../Header'
+import Intro from '../Intro'
 
-describe('Header', () => {
+describe('Intro', () => {
   it('renders as expected', () => {
     expect.assertions(1)
-    const rendered = render(<Header />)
+    const rendered = render(<Intro />)
     expect(rendered).toMatchSnapshot()
   })
 })

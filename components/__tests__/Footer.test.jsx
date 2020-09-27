@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from 'enzyme'
 import Footer from '../Footer'
 
-describe('footer', () => {
+describe('Footer', () => {
   it('renders Powered by Vercel', () => {
     expect.assertions(1)
     const rendered = render(<Footer />)
