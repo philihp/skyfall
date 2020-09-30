@@ -44,6 +44,13 @@ export default class MyDocument extends Document {
           />
           <link rel="manifest" href="/site.webmanifest" />
           <link rel="icon" href="/favicon.ico" />
+          <meta property="og:title" content="Data 2 the People" />
+          <meta property="og:type" content="website" />
+          <meta
+            property="og:url"
+            content="https://donate.data2thepeople.org/"
+          />
+          <meta property="og:image" content="/preview.png" />
         </Head>
         <body>
           <Main />
