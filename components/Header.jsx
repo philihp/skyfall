@@ -28,7 +28,9 @@ export default function Header() {
     <Spacing top={1.5}>
       <div className={cx(styles.header)}>
         <div className={cx(styles.row)}>
-          <img src="/logo-large.png" className={cx(styles.logo)} alt="logo" />
+          <Spacing inline left={2}>
+            <img src="/logo-large.png" className={cx(styles.logo)} alt="logo" />
+          </Spacing>
           <Title level={3}>Data 2 the People</Title>
         </div>
         <div className={cx(styles.row)}>
@@ -42,9 +44,11 @@ export default function Header() {
               Donate
             </Link>
           </Spacing>
-          <Link bold href="https://www.data2thepeople.org/">
-            Home
-          </Link>
+          <Spacing right={2.5}>
+            <Link bold href="https://www.data2thepeople.org/">
+              Home
+            </Link>
+          </Spacing>
         </div>
       </div>
     </Spacing>

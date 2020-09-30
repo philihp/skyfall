@@ -36,6 +36,16 @@ const styleSheet = () => ({
     alignItems: 'flex-end',
     margin: 'auto',
   },
+  adaptive_row: {
+    display: 'inline-flex',
+    alignItems: 'flex-end',
+    margin: 'auto',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  adaptive_row_item: {
+    flexBasis: 300,
+  },
 })
 
 function Index({ data }) {
@@ -182,19 +192,23 @@ function Index({ data }) {
       <Spacing all={3}>
         <Intro />
         <div className={cx(styles.center)}>
-          <div className={cx(styles.row)}>
-            <Map
-              filterOptions={filterOptions}
-              setFilterOptions={setFilterOptions}
-              setSelectedIdx={setSelectedIdx}
-            />
-            <Scatterplot
-              selectedIdx={selectedIdx}
-              setSelectedIdx={setSelectedIdx}
-              data={data}
-              filteredDataIdxs={filteredDataIdxs}
-              setFilterOptions={setFilterOptions}
-            />
+          <div className={cx(styles.adaptive_row)}>
+            <div className={cx(styles.adaptive_row_item)}>
+              <Map
+                filterOptions={filterOptions}
+                setFilterOptions={setFilterOptions}
+                setSelectedIdx={setSelectedIdx}
+              />
+            </div>
+            <div className={cx(styles.adaptive_row_item)}>
+              <Scatterplot
+                selectedIdx={selectedIdx}
+                setSelectedIdx={setSelectedIdx}
+                data={data}
+                filteredDataIdxs={filteredDataIdxs}
+                setFilterOptions={setFilterOptions}
+              />
+            </div>
           </div>
         </div>
 
