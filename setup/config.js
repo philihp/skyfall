@@ -45,6 +45,12 @@ export const ACTIVE_COLUMNS = [
   'amt_raised_ratio_2020',
 ]
 
+export const SORTABLE = [
+  'vote_diff_pct_2018',
+  'amt_raised_ratio_2018',
+  'amt_raised_ratio_2020',
+]
+
 export const CUSTOM_COLUMN_FORMATTERS = {
   dem_candidate: (row) => {
     return (
