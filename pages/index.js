@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react'
+import Head from 'next/head'
 import DataTable from 'react-data-table-component'
 import useStyles from '@airbnb/lunar/lib/hooks/useStyles'
 
@@ -22,6 +23,7 @@ import {
   FILTER_NAMES,
   BREAK_CHAR,
   CUSTOM_RENDERERS,
+  SORTABLE,
 } from '../setup/config'
 import { stringNumToFloat } from '../utils/utils'
 
@@ -168,10 +170,14 @@ function Index({ data }) {
       CUSTOM_RENDERERS[property] === undefined
         ? {}
         : CUSTOM_RENDERERS[property],
+    sortable: SORTABLE.includes(property),
   }))
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Donate with Data2thePeople</title>
+      </Head>
       <Header />
       <Spacing all={3}>
         <Intro />
