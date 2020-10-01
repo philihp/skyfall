@@ -19,12 +19,35 @@ initialize {
             "children": Array [
               Object {
                 "attribs": Object {
-                  "alt": "logo",
-                  "class": "logo",
-                  "src": "/logo-large.png",
+                  "class": "outerLeft_2 spacing_inline",
                 },
-                "children": Array [],
-                "name": "img",
+                "children": Array [
+                  Object {
+                    "attribs": Object {
+                      "alt": "logo",
+                      "class": "logo",
+                      "src": "/logo-large.png",
+                    },
+                    "children": Array [],
+                    "name": "img",
+                    "namespace": "http://www.w3.org/1999/xhtml",
+                    "next": null,
+                    "parent": [Circular],
+                    "prev": null,
+                    "type": "tag",
+                    "x-attribsNamespace": Object {
+                      "alt": undefined,
+                      "class": undefined,
+                      "src": undefined,
+                    },
+                    "x-attribsPrefix": Object {
+                      "alt": undefined,
+                      "class": undefined,
+                      "src": undefined,
+                    },
+                  },
+                ],
+                "name": "div",
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
@@ -56,14 +79,10 @@ initialize {
                 "prev": null,
                 "type": "tag",
                 "x-attribsNamespace": Object {
-                  "alt": undefined,
                   "class": undefined,
-                  "src": undefined,
                 },
                 "x-attribsPrefix": Object {
-                  "alt": undefined,
                   "class": undefined,
-                  "src": undefined,
                 },
               },
               Object {
@@ -85,26 +104,45 @@ initialize {
                 "parent": [Circular],
                 "prev": Object {
                   "attribs": Object {
-                    "alt": "logo",
-                    "class": "logo",
-                    "src": "/logo-large.png",
+                    "class": "outerLeft_2 spacing_inline",
                   },
-                  "children": Array [],
-                  "name": "img",
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "alt": "logo",
+                        "class": "logo",
+                        "src": "/logo-large.png",
+                      },
+                      "children": Array [],
+                      "name": "img",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "alt": undefined,
+                        "class": undefined,
+                        "src": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "alt": undefined,
+                        "class": undefined,
+                        "src": undefined,
+                      },
+                    },
+                  ],
+                  "name": "div",
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": [Circular],
                   "parent": [Circular],
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
-                    "alt": undefined,
                     "class": undefined,
-                    "src": undefined,
                   },
                   "x-attribsPrefix": Object {
-                    "alt": undefined,
                     "class": undefined,
-                    "src": undefined,
                   },
                 },
                 "type": "tag",
@@ -263,37 +301,58 @@ initialize {
                     "namespace": "http://www.w3.org/1999/xhtml",
                     "next": Object {
                       "attribs": Object {
-                        "class": "text text_bold text_inline",
+                        "class": "outerRight_2dot5",
                       },
                       "children": Array [
                         Object {
                           "attribs": Object {
-                            "class": "link",
-                            "href": "https://www.data2thepeople.org/",
+                            "class": "text text_bold text_inline",
                           },
                           "children": Array [
                             Object {
-                              "attribs": Object {},
+                              "attribs": Object {
+                                "class": "link",
+                                "href": "https://www.data2thepeople.org/",
+                              },
                               "children": Array [
                                 Object {
-                                  "data": "Home",
+                                  "attribs": Object {},
+                                  "children": Array [
+                                    Object {
+                                      "data": "Home",
+                                      "next": null,
+                                      "parent": [Circular],
+                                      "prev": null,
+                                      "type": "text",
+                                    },
+                                  ],
+                                  "name": "span",
+                                  "namespace": "http://www.w3.org/1999/xhtml",
                                   "next": null,
                                   "parent": [Circular],
                                   "prev": null,
-                                  "type": "text",
+                                  "type": "tag",
+                                  "x-attribsNamespace": Object {},
+                                  "x-attribsPrefix": Object {},
                                 },
                               ],
-                              "name": "span",
+                              "name": "a",
                               "namespace": "http://www.w3.org/1999/xhtml",
                               "next": null,
                               "parent": [Circular],
                               "prev": null,
                               "type": "tag",
-                              "x-attribsNamespace": Object {},
-                              "x-attribsPrefix": Object {},
+                              "x-attribsNamespace": Object {
+                                "class": undefined,
+                                "href": undefined,
+                              },
+                              "x-attribsPrefix": Object {
+                                "class": undefined,
+                                "href": undefined,
+                              },
                             },
                           ],
-                          "name": "a",
+                          "name": "span",
                           "namespace": "http://www.w3.org/1999/xhtml",
                           "next": null,
                           "parent": [Circular],
@@ -301,15 +360,13 @@ initialize {
                           "type": "tag",
                           "x-attribsNamespace": Object {
                             "class": undefined,
-                            "href": undefined,
                           },
                           "x-attribsPrefix": Object {
                             "class": undefined,
-                            "href": undefined,
                           },
                         },
                       ],
-                      "name": "span",
+                      "name": "div",
                       "namespace": "http://www.w3.org/1999/xhtml",
                       "next": null,
                       "parent": [Circular],
@@ -413,37 +470,58 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
-                      "class": "text text_bold text_inline",
+                      "class": "outerRight_2dot5",
                     },
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "link",
-                          "href": "https://www.data2thepeople.org/",
+                          "class": "text text_bold text_inline",
                         },
                         "children": Array [
                           Object {
-                            "attribs": Object {},
+                            "attribs": Object {
+                              "class": "link",
+                              "href": "https://www.data2thepeople.org/",
+                            },
                             "children": Array [
                               Object {
-                                "data": "Home",
+                                "attribs": Object {},
+                                "children": Array [
+                                  Object {
+                                    "data": "Home",
+                                    "next": null,
+                                    "parent": [Circular],
+                                    "prev": null,
+                                    "type": "text",
+                                  },
+                                ],
+                                "name": "span",
+                                "namespace": "http://www.w3.org/1999/xhtml",
                                 "next": null,
                                 "parent": [Circular],
                                 "prev": null,
-                                "type": "text",
+                                "type": "tag",
+                                "x-attribsNamespace": Object {},
+                                "x-attribsPrefix": Object {},
                               },
                             ],
-                            "name": "span",
+                            "name": "a",
                             "namespace": "http://www.w3.org/1999/xhtml",
                             "next": null,
                             "parent": [Circular],
                             "prev": null,
                             "type": "tag",
-                            "x-attribsNamespace": Object {},
-                            "x-attribsPrefix": Object {},
+                            "x-attribsNamespace": Object {
+                              "class": undefined,
+                              "href": undefined,
+                            },
+                            "x-attribsPrefix": Object {
+                              "class": undefined,
+                              "href": undefined,
+                            },
                           },
                         ],
-                        "name": "a",
+                        "name": "span",
                         "namespace": "http://www.w3.org/1999/xhtml",
                         "next": null,
                         "parent": [Circular],
@@ -451,15 +529,13 @@ initialize {
                         "type": "tag",
                         "x-attribsNamespace": Object {
                           "class": undefined,
-                          "href": undefined,
                         },
                         "x-attribsPrefix": Object {
                           "class": undefined,
-                          "href": undefined,
                         },
                       },
                     ],
-                    "name": "span",
+                    "name": "div",
                     "namespace": "http://www.w3.org/1999/xhtml",
                     "next": null,
                     "parent": [Circular],
@@ -563,37 +639,58 @@ initialize {
                 },
                 Object {
                   "attribs": Object {
-                    "class": "text text_bold text_inline",
+                    "class": "outerRight_2dot5",
                   },
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "link",
-                        "href": "https://www.data2thepeople.org/",
+                        "class": "text text_bold text_inline",
                       },
                       "children": Array [
                         Object {
-                          "attribs": Object {},
+                          "attribs": Object {
+                            "class": "link",
+                            "href": "https://www.data2thepeople.org/",
+                          },
                           "children": Array [
                             Object {
-                              "data": "Home",
+                              "attribs": Object {},
+                              "children": Array [
+                                Object {
+                                  "data": "Home",
+                                  "next": null,
+                                  "parent": [Circular],
+                                  "prev": null,
+                                  "type": "text",
+                                },
+                              ],
+                              "name": "span",
+                              "namespace": "http://www.w3.org/1999/xhtml",
                               "next": null,
                               "parent": [Circular],
                               "prev": null,
-                              "type": "text",
+                              "type": "tag",
+                              "x-attribsNamespace": Object {},
+                              "x-attribsPrefix": Object {},
                             },
                           ],
-                          "name": "span",
+                          "name": "a",
                           "namespace": "http://www.w3.org/1999/xhtml",
                           "next": null,
                           "parent": [Circular],
                           "prev": null,
                           "type": "tag",
-                          "x-attribsNamespace": Object {},
-                          "x-attribsPrefix": Object {},
+                          "x-attribsNamespace": Object {
+                            "class": undefined,
+                            "href": undefined,
+                          },
+                          "x-attribsPrefix": Object {
+                            "class": undefined,
+                            "href": undefined,
+                          },
                         },
                       ],
-                      "name": "a",
+                      "name": "span",
                       "namespace": "http://www.w3.org/1999/xhtml",
                       "next": null,
                       "parent": [Circular],
@@ -601,15 +698,13 @@ initialize {
                       "type": "tag",
                       "x-attribsNamespace": Object {
                         "class": undefined,
-                        "href": undefined,
                       },
                       "x-attribsPrefix": Object {
                         "class": undefined,
-                        "href": undefined,
                       },
                     },
                   ],
-                  "name": "span",
+                  "name": "div",
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": null,
                   "parent": [Circular],
@@ -949,37 +1044,58 @@ initialize {
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
-                      "class": "text text_bold text_inline",
+                      "class": "outerRight_2dot5",
                     },
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "link",
-                          "href": "https://www.data2thepeople.org/",
+                          "class": "text text_bold text_inline",
                         },
                         "children": Array [
                           Object {
-                            "attribs": Object {},
+                            "attribs": Object {
+                              "class": "link",
+                              "href": "https://www.data2thepeople.org/",
+                            },
                             "children": Array [
                               Object {
-                                "data": "Home",
+                                "attribs": Object {},
+                                "children": Array [
+                                  Object {
+                                    "data": "Home",
+                                    "next": null,
+                                    "parent": [Circular],
+                                    "prev": null,
+                                    "type": "text",
+                                  },
+                                ],
+                                "name": "span",
+                                "namespace": "http://www.w3.org/1999/xhtml",
                                 "next": null,
                                 "parent": [Circular],
                                 "prev": null,
-                                "type": "text",
+                                "type": "tag",
+                                "x-attribsNamespace": Object {},
+                                "x-attribsPrefix": Object {},
                               },
                             ],
-                            "name": "span",
+                            "name": "a",
                             "namespace": "http://www.w3.org/1999/xhtml",
                             "next": null,
                             "parent": [Circular],
                             "prev": null,
                             "type": "tag",
-                            "x-attribsNamespace": Object {},
-                            "x-attribsPrefix": Object {},
+                            "x-attribsNamespace": Object {
+                              "class": undefined,
+                              "href": undefined,
+                            },
+                            "x-attribsPrefix": Object {
+                              "class": undefined,
+                              "href": undefined,
+                            },
                           },
                         ],
-                        "name": "a",
+                        "name": "span",
                         "namespace": "http://www.w3.org/1999/xhtml",
                         "next": null,
                         "parent": [Circular],
@@ -987,15 +1103,13 @@ initialize {
                         "type": "tag",
                         "x-attribsNamespace": Object {
                           "class": undefined,
-                          "href": undefined,
                         },
                         "x-attribsPrefix": Object {
                           "class": undefined,
-                          "href": undefined,
                         },
                       },
                     ],
-                    "name": "span",
+                    "name": "div",
                     "namespace": "http://www.w3.org/1999/xhtml",
                     "next": null,
                     "parent": [Circular],
@@ -1099,37 +1213,58 @@ initialize {
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": Object {
                   "attribs": Object {
-                    "class": "text text_bold text_inline",
+                    "class": "outerRight_2dot5",
                   },
                   "children": Array [
                     Object {
                       "attribs": Object {
-                        "class": "link",
-                        "href": "https://www.data2thepeople.org/",
+                        "class": "text text_bold text_inline",
                       },
                       "children": Array [
                         Object {
-                          "attribs": Object {},
+                          "attribs": Object {
+                            "class": "link",
+                            "href": "https://www.data2thepeople.org/",
+                          },
                           "children": Array [
                             Object {
-                              "data": "Home",
+                              "attribs": Object {},
+                              "children": Array [
+                                Object {
+                                  "data": "Home",
+                                  "next": null,
+                                  "parent": [Circular],
+                                  "prev": null,
+                                  "type": "text",
+                                },
+                              ],
+                              "name": "span",
+                              "namespace": "http://www.w3.org/1999/xhtml",
                               "next": null,
                               "parent": [Circular],
                               "prev": null,
-                              "type": "text",
+                              "type": "tag",
+                              "x-attribsNamespace": Object {},
+                              "x-attribsPrefix": Object {},
                             },
                           ],
-                          "name": "span",
+                          "name": "a",
                           "namespace": "http://www.w3.org/1999/xhtml",
                           "next": null,
                           "parent": [Circular],
                           "prev": null,
                           "type": "tag",
-                          "x-attribsNamespace": Object {},
-                          "x-attribsPrefix": Object {},
+                          "x-attribsNamespace": Object {
+                            "class": undefined,
+                            "href": undefined,
+                          },
+                          "x-attribsPrefix": Object {
+                            "class": undefined,
+                            "href": undefined,
+                          },
                         },
                       ],
-                      "name": "a",
+                      "name": "span",
                       "namespace": "http://www.w3.org/1999/xhtml",
                       "next": null,
                       "parent": [Circular],
@@ -1137,15 +1272,13 @@ initialize {
                       "type": "tag",
                       "x-attribsNamespace": Object {
                         "class": undefined,
-                        "href": undefined,
                       },
                       "x-attribsPrefix": Object {
                         "class": undefined,
-                        "href": undefined,
                       },
                     },
                   ],
-                  "name": "span",
+                  "name": "div",
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": null,
                   "parent": [Circular],
@@ -1249,37 +1382,58 @@ initialize {
               },
               Object {
                 "attribs": Object {
-                  "class": "text text_bold text_inline",
+                  "class": "outerRight_2dot5",
                 },
                 "children": Array [
                   Object {
                     "attribs": Object {
-                      "class": "link",
-                      "href": "https://www.data2thepeople.org/",
+                      "class": "text text_bold text_inline",
                     },
                     "children": Array [
                       Object {
-                        "attribs": Object {},
+                        "attribs": Object {
+                          "class": "link",
+                          "href": "https://www.data2thepeople.org/",
+                        },
                         "children": Array [
                           Object {
-                            "data": "Home",
+                            "attribs": Object {},
+                            "children": Array [
+                              Object {
+                                "data": "Home",
+                                "next": null,
+                                "parent": [Circular],
+                                "prev": null,
+                                "type": "text",
+                              },
+                            ],
+                            "name": "span",
+                            "namespace": "http://www.w3.org/1999/xhtml",
                             "next": null,
                             "parent": [Circular],
                             "prev": null,
-                            "type": "text",
+                            "type": "tag",
+                            "x-attribsNamespace": Object {},
+                            "x-attribsPrefix": Object {},
                           },
                         ],
-                        "name": "span",
+                        "name": "a",
                         "namespace": "http://www.w3.org/1999/xhtml",
                         "next": null,
                         "parent": [Circular],
                         "prev": null,
                         "type": "tag",
-                        "x-attribsNamespace": Object {},
-                        "x-attribsPrefix": Object {},
+                        "x-attribsNamespace": Object {
+                          "class": undefined,
+                          "href": undefined,
+                        },
+                        "x-attribsPrefix": Object {
+                          "class": undefined,
+                          "href": undefined,
+                        },
                       },
                     ],
-                    "name": "a",
+                    "name": "span",
                     "namespace": "http://www.w3.org/1999/xhtml",
                     "next": null,
                     "parent": [Circular],
@@ -1287,15 +1441,13 @@ initialize {
                     "type": "tag",
                     "x-attribsNamespace": Object {
                       "class": undefined,
-                      "href": undefined,
                     },
                     "x-attribsPrefix": Object {
                       "class": undefined,
-                      "href": undefined,
                     },
                   },
                 ],
-                "name": "span",
+                "name": "div",
                 "namespace": "http://www.w3.org/1999/xhtml",
                 "next": null,
                 "parent": [Circular],
@@ -1478,12 +1630,35 @@ initialize {
               "children": Array [
                 Object {
                   "attribs": Object {
-                    "alt": "logo",
-                    "class": "logo",
-                    "src": "/logo-large.png",
+                    "class": "outerLeft_2 spacing_inline",
                   },
-                  "children": Array [],
-                  "name": "img",
+                  "children": Array [
+                    Object {
+                      "attribs": Object {
+                        "alt": "logo",
+                        "class": "logo",
+                        "src": "/logo-large.png",
+                      },
+                      "children": Array [],
+                      "name": "img",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "next": null,
+                      "parent": [Circular],
+                      "prev": null,
+                      "type": "tag",
+                      "x-attribsNamespace": Object {
+                        "alt": undefined,
+                        "class": undefined,
+                        "src": undefined,
+                      },
+                      "x-attribsPrefix": Object {
+                        "alt": undefined,
+                        "class": undefined,
+                        "src": undefined,
+                      },
+                    },
+                  ],
+                  "name": "div",
                   "namespace": "http://www.w3.org/1999/xhtml",
                   "next": Object {
                     "attribs": Object {
@@ -1515,14 +1690,10 @@ initialize {
                   "prev": null,
                   "type": "tag",
                   "x-attribsNamespace": Object {
-                    "alt": undefined,
                     "class": undefined,
-                    "src": undefined,
                   },
                   "x-attribsPrefix": Object {
-                    "alt": undefined,
                     "class": undefined,
-                    "src": undefined,
                   },
                 },
                 Object {
@@ -1544,26 +1715,45 @@ initialize {
                   "parent": [Circular],
                   "prev": Object {
                     "attribs": Object {
-                      "alt": "logo",
-                      "class": "logo",
-                      "src": "/logo-large.png",
+                      "class": "outerLeft_2 spacing_inline",
                     },
-                    "children": Array [],
-                    "name": "img",
+                    "children": Array [
+                      Object {
+                        "attribs": Object {
+                          "alt": "logo",
+                          "class": "logo",
+                          "src": "/logo-large.png",
+                        },
+                        "children": Array [],
+                        "name": "img",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "tag",
+                        "x-attribsNamespace": Object {
+                          "alt": undefined,
+                          "class": undefined,
+                          "src": undefined,
+                        },
+                        "x-attribsPrefix": Object {
+                          "alt": undefined,
+                          "class": undefined,
+                          "src": undefined,
+                        },
+                      },
+                    ],
+                    "name": "div",
                     "namespace": "http://www.w3.org/1999/xhtml",
                     "next": [Circular],
                     "parent": [Circular],
                     "prev": null,
                     "type": "tag",
                     "x-attribsNamespace": Object {
-                      "alt": undefined,
                       "class": undefined,
-                      "src": undefined,
                     },
                     "x-attribsPrefix": Object {
-                      "alt": undefined,
                       "class": undefined,
-                      "src": undefined,
                     },
                   },
                   "type": "tag",
