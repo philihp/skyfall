@@ -9,10 +9,10 @@
   dependencies:
     "@types/react" "*"
 
-"@airbnb/lunar@3.26.0":
-  version "3.26.0"
-  resolved "https://registry.yarnpkg.com/@airbnb/lunar/-/lunar-3.26.0.tgz#9ff254287012d67490719638d0ebb7468c9814c6"
-  integrity sha512-S8zkFfHwsVEK6tvKkWEMh/ts76znPtumiqW8FYO3/PwU6WCvNsMe6NBs86YPaWNSUfA8bJfpz9H0W1f2b6R+jA==
+"@airbnb/lunar@3.26.1":
+  version "3.26.1"
+  resolved "https://registry.yarnpkg.com/@airbnb/lunar/-/lunar-3.26.1.tgz#12efa2b33123341bc7bc290a75564c12d576626c"
+  integrity sha512-WmiO2KzgJBDrephtS5FTCSQiRE9f6N8DqoWsTYjPd1qNeg9YSFh+ardF4h3CJlTcOZLEwVjnYzymKToSBsKAzw==
   dependencies:
     "@types/airbnb-prop-types" "*"
     "@types/hoist-non-react-statics" "*"
