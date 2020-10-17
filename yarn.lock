@@ -2466,25 +2466,6 @@
     d3-scale "^3.0.1"
     d3-time "^1.1.0"
 
-"@visx/shape@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@visx/shape/-/shape-1.0.0.tgz#a7db25a7e032408e508da1868a0cdaaf77be9d9c"
-  integrity sha512-htBS2kTvviXwNyjoeZzL8tNJPEtBL2M5Ug5akFUxLGyzsFGQVzMNNv22WvSM8P0hXyNKR89nXp4crnVFWuy4SQ==
-  dependencies:
-    "@types/classnames" "^2.2.9"
-    "@types/d3-path" "^1.0.8"
-    "@types/d3-shape" "^1.3.1"
-    "@types/lodash" "^4.14.146"
-    "@types/react" "*"
-    "@visx/curve" "1.0.0"
-    "@visx/group" "1.0.0"
-    "@visx/scale" "1.0.0"
-    classnames "^2.2.5"
-    d3-path "^1.0.5"
-    d3-shape "^1.2.0"
-    lodash "^4.17.15"
-    prop-types "^15.5.10"
-
 "@visx/shape@1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@visx/shape/-/shape-1.1.0.tgz#a0fdcf21a84f6cf6799aa21e24abca8afdd3e282"
