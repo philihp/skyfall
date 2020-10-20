@@ -51,6 +51,13 @@ export default class MyDocument extends Document {
             content="https://donate.data2thepeople.org/"
           />
           <meta property="og:image" content="/preview.png" />
+          <link
+            rel="preload"
+            href="/WhyteTrial-Book.woff"
+            as="font"
+            crossOrigin=""
+          />
+          <link href="/globals.css" rel="stylesheet" />
         </Head>
         <body>
           <Main />

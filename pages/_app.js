@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import Router from 'next/router'
 import * as gtag from '../lib/gtag'
-import '../styles/globals.css'
 import '../setup/setTheme'
 
 // eslint-disable-next-line react/prop-types
