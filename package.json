@@ -31,9 +31,9 @@
     "styled-components": "5.2.1"
   },
   "devDependencies": {
-    "@babel/cli": "7.12.13",
-    "@babel/core": "7.12.13",
-    "@babel/preset-env": "7.12.13",
+    "@babel/cli": "7.12.16",
+    "@babel/core": "7.12.16",
+    "@babel/preset-env": "7.12.16",
     "@babel/preset-react": "7.12.13",
     "@philihp/eslint-config": "4.2.0",
     "husky": "5.0.9",
