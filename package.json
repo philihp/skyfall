@@ -24,9 +24,9 @@
     "enzyme-adapter-react-16": "1.15.6",
     "neat-csv": "6.0.1",
     "next": "10.2.3",
-    "react": "17.0.1",
+    "react": "17.0.2",
     "react-data-table-component": "6.11.7",
-    "react-dom": "17.0.1",
+    "react-dom": "17.0.2",
     "react-simple-maps": "2.3.0",
     "styled-components": "5.3.0"
   },
